@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { createClient } from '@supabase/supabase-js';
+import { useSupabase } from '../hooks/useSupabase';
 
 type GalleryImage = {
   id: number;
@@ -48,21 +48,18 @@ export function GalleryPage() {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [images, setImages] = useState<GalleryImage[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const supabase = process.env.SUPABASE_URL && process.env.SUPABASE_KEY 
-    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
-    : null;
+  const [imagesLoading, setImagesLoading] = useState(true);
+  const [imagesError, setImagesError] = useState<string | null>(null);
+  const { supabase, error: supabaseError, loading: supabaseLoading } = useSupabase();
 
   useEffect(() => {
     const fetchImages = async () => {
       if (!supabase) {
-        setError("Supabase client is not configured.");
-        setLoading(false);
+        // Wait for the supabase client to be initialized by the hook.
         return;
       }
       try {
+        setImagesLoading(true);
         const { data: dbData, error: dbError } = await supabase
           .from('gallery_images')
           .select('id, alt, image_path')
@@ -84,13 +81,17 @@ export function GalleryPage() {
 
         setImages(imagesWithUrls);
       } catch (err: any) {
-        setError(err.message || 'Failed to fetch images.');
+        setImagesError(err.message || 'Failed to fetch images.');
       } finally {
-        setLoading(false);
+        setImagesLoading(false);
       }
     };
+    
     fetchImages();
-  }, []);
+  }, [supabase]);
+
+  const isLoading = supabaseLoading || imagesLoading;
+  const error = supabaseError || imagesError;
 
   return (
     <>
@@ -105,10 +106,10 @@ export function GalleryPage() {
             </p>
           </div>
 
-          {loading && <p className="text-center text-gold-accent">Loading gallery...</p>}
-          {error && <p className="text-center text-red-500">{error}</p>}
+          {isLoading && <p className="text-center text-gold-accent">Loading gallery...</p>}
+          {error && <p className="text-center text-red-500">Error: {error}</p>}
 
-          {!loading && !error && (
+          {!isLoading && !error && (
              images.length > 0 ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                   {images.map((image, index) => (
@@ -132,7 +133,7 @@ export function GalleryPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-center text-gray-500">The gallery is currently empty.</p>
+                <p className="text-center text-gray-500">The gallery is currently empty. Add images from the admin dashboard.</p>
               )
           )}
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { useSupabase } from '../hooks/useSupabase';
 
 // In a real application, use environment variables.
 const ADMIN_PASSWORD = 'layodacha_admin_password';
@@ -40,15 +40,11 @@ export function AdminPage() {
   const [newImageFile, setNewImageFile] = useState<File | null>(null);
   const [newImageAlt, setNewImageAlt] = useState('');
 
-  const supabase = process.env.SUPABASE_URL && process.env.SUPABASE_KEY 
-    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
-    : null;
+  const { supabase, error: supabaseError, loading: supabaseLoading } = useSupabase();
 
   const fetchRequests = async () => {
-    if (!supabase) {
-      setRequestsError("Supabase client is not configured.");
-      return;
-    }
+    if (!supabase) return;
+
     setRequestsLoading(true);
     setRequestsError(null);
     try {
@@ -67,10 +63,8 @@ export function AdminPage() {
   };
 
   const fetchImages = async () => {
-    if (!supabase) {
-      setGalleryError("Supabase client is not configured.");
-      return;
-    }
+    if (!supabase) return;
+
     setGalleryLoading(true);
     setGalleryError(null);
     try {
@@ -95,11 +89,11 @@ export function AdminPage() {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && supabase) {
       fetchRequests();
       fetchImages();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, supabase]);
 
   const handlePasswordSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -199,6 +193,14 @@ export function AdminPage() {
         </div>
       </div>
     );
+  }
+
+  if (supabaseLoading) {
+    return <div className="min-h-screen flex items-center justify-center bg-[#121212] text-gold-accent text-xl">Connecting to database...</div>;
+  }
+
+  if (supabaseError) {
+    return <div className="min-h-screen flex items-center justify-center bg-[#121212] text-red-500 text-xl text-center p-8">Error: {supabaseError}</div>;
   }
 
   return (

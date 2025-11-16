@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { createClient } from '@supabase/supabase-js';
+import { useSupabase } from '../hooks/useSupabase';
 
 const InputField = ({ id, label, type = "text", placeholder = "" }) => (
   <div>
@@ -22,15 +22,20 @@ export function OrderPage() {
     const { t } = useTranslation();
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const { supabase, error: supabaseError, loading: supabaseLoading } = useSupabase();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (!supabase) {
+          setSubmitError('Database connection not available. Please try again later.');
+          return;
+        }
+
         setLoading(true);
-        setError(null);
+        setSubmitError(null);
         
-        // Assumes SUPABASE_URL and SUPABASE_KEY are in environment variables
-        const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!);
         const formData = new FormData(e.currentTarget);
         
         const dataToInsert = {
@@ -55,7 +60,7 @@ export function OrderPage() {
           setSubmitted(true);
 
         } catch (err: any) {
-          setError(err.message || 'An unexpected error occurred. Please try again.');
+          setSubmitError(err.message || 'An unexpected error occurred. Please try again.');
         } finally {
           setLoading(false);
         }
@@ -118,12 +123,13 @@ export function OrderPage() {
             <div className="mt-8 text-center">
               <button 
                 type="submit"
-                disabled={loading}
+                disabled={loading || supabaseLoading}
                 className="bg-gold-accent text-gray-900 font-bold py-3 px-12 rounded-full text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Submitting...' : t('orderPage.submit')}
+                {supabaseLoading ? 'Connecting...' : (loading ? 'Submitting...' : t('orderPage.submit'))}
               </button>
-              {error && <p className="text-red-500 mt-4">{error}</p>}
+              {supabaseError && <p className="text-red-500 mt-4">Database Error: {supabaseError}</p>}
+              {submitError && <p className="text-red-500 mt-4">{submitError}</p>}
             </div>
           </form>
         </div>
