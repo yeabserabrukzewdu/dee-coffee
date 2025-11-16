@@ -122,7 +122,7 @@ export function GalleryPage() {
                       <img 
                         src={image.src} 
                         alt={image.alt}
-                        className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-110"
+                        className="w-full transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300 flex items-end p-4">
                         <p className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
