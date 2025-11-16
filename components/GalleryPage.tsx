@@ -111,11 +111,11 @@ export function GalleryPage() {
 
           {!isLoading && !error && (
              images.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6">
                   {images.map((image, index) => (
                     <div 
                       key={image.id}
-                      className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group fade-in-up"
+                      className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group fade-in-up break-inside-avoid mb-4 md:mb-6"
                       style={{ animationDelay: `${index * 100}ms` }}
                       onClick={() => setSelectedImage(image)}
                     >
