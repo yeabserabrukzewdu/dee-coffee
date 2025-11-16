@@ -28,7 +28,7 @@ export function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#181818] shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" className="font-display text-2xl font-bold text-white">
-          Layodacha
+          Dee Coffee
         </a>
         <nav className="hidden md:flex items-center space-x-8">
           <a href="/#" className="text-gray-300 hover:text-white transition-colors">{t('nav.home')}</a>
