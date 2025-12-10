@@ -1,0 +1,45 @@
+import React, { useEffect, useRef, useState, PropsWithChildren } from 'react';
+
+interface RevealProps {
+  className?: string;
+  delay?: number; // Delay in milliseconds
+  threshold?: number; // Intersection threshold (0.0 - 1.0)
+}
+
+export const Reveal: React.FC<PropsWithChildren<RevealProps>> = ({ children, className = '', delay = 0, threshold = 0.1 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Animate only once
+        }
+      },
+      {
+        threshold: threshold,
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before the bottom
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [threshold]);
+
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${isVisible ? 'active' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};

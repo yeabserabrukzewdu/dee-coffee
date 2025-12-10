@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { useSupabase } from '../hooks/useSupabase';
 
 // In a real application, use environment variables.
+const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = 'layodacha_admin_password';
 
 type SampleRequest = {
@@ -26,6 +28,7 @@ type GalleryImage = {
 
 export function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
 
@@ -95,18 +98,19 @@ export function AdminPage() {
     }
   }, [isAuthenticated, supabase]);
 
-  const handlePasswordSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
       setAuthError(null);
     } else {
-      setAuthError('Invalid password. Please try again.');
+      setAuthError('Invalid username or password. Please try again.');
     }
   };
   
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setUsername('');
     setPassword('');
     setRequests([]);
     setGalleryImages([]);
@@ -174,20 +178,41 @@ export function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#121212]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] dark:bg-[#121212] transition-colors duration-300">
         <div className="w-full max-w-md mx-auto">
-          <form onSubmit={handlePasswordSubmit} className="bg-[#181818] p-8 md:p-12 rounded-lg shadow-2xl">
-            <h1 className="font-display text-3xl font-bold text-center text-white mb-6">Admin Access</h1>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">Password</label>
-              <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full bg-[#222] border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-gold-accent" required />
+          <form onSubmit={handleLoginSubmit} className="bg-white dark:bg-[#181818] p-8 md:p-12 rounded-lg shadow-2xl transition-colors duration-300">
+            <h1 className="font-display text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">Admin Access</h1>
+            
+            <div className="mb-4">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Username</label>
+              <input 
+                type="text" 
+                id="username" 
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} 
+                className="w-full bg-[#FDFBF7] dark:bg-[#222] border border-gray-300 dark:border-gray-600 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-accent transition-colors duration-300" 
+                required 
+              />
             </div>
+            
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                className="w-full bg-[#FDFBF7] dark:bg-[#222] border border-gray-300 dark:border-gray-600 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-accent transition-colors duration-300" 
+                required 
+              />
+            </div>
+
             <div className="mt-6">
               <button type="submit" className="w-full bg-gold-accent text-gray-900 font-bold py-3 px-6 rounded-full text-lg hover:bg-opacity-90 transition-all">Login</button>
               {authError && <p className="text-red-500 mt-4 text-center">{authError}</p>}
             </div>
             <div className="text-center mt-6">
-              <a href="/#" className="text-sm text-gray-400 hover:text-gold-accent">← Back to Main Site</a>
+              <a href="/#" className="text-sm text-gray-500 dark:text-gray-400 hover:text-gold-accent">← Back to Main Site</a>
             </div>
           </form>
         </div>
@@ -196,36 +221,36 @@ export function AdminPage() {
   }
 
   if (supabaseLoading) {
-    return <div className="min-h-screen flex items-center justify-center bg-[#121212] text-gold-accent text-xl">Connecting to database...</div>;
+    return <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] dark:bg-[#121212] text-gold-accent text-xl">Connecting to database...</div>;
   }
 
   if (supabaseError) {
-    return <div className="min-h-screen flex items-center justify-center bg-[#121212] text-red-500 text-xl text-center p-8">Error: {supabaseError}</div>;
+    return <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] dark:bg-[#121212] text-red-500 text-xl text-center p-8">Error: {supabaseError}</div>;
   }
 
   return (
-    <section className="min-h-screen bg-[#121212] py-12 md:py-20">
+    <section className="min-h-screen bg-[#FDFBF7] dark:bg-[#121212] py-12 md:py-20 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-10">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-white">Admin Dashboard</h1>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
           <div>
-            <a href="/#" className="text-gray-400 hover:text-white mr-6">← Back to Site</a>
-            <button onClick={handleLogout} className="bg-gray-700 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-600 transition-all">Logout</button>
+            <a href="/#" className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mr-6">← Back to Site</a>
+            <button onClick={handleLogout} className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-bold py-2 px-6 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">Logout</button>
           </div>
         </div>
         
         {/* Gallery Management */}
-        <div className="bg-[#181818] p-8 rounded-lg shadow-2xl mb-12">
-            <h2 className="font-display text-2xl font-bold text-white mb-6">Gallery Management</h2>
+        <div className="bg-white dark:bg-[#181818] p-8 rounded-lg shadow-2xl mb-12 transition-colors duration-300">
+            <h2 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-6">Gallery Management</h2>
             {galleryError && <p className="text-red-500 mb-4">{galleryError}</p>}
             <form onSubmit={handleAddImage} className="grid md:grid-cols-3 gap-4 items-end mb-8">
                 <div>
-                    <label htmlFor="imageFile" className="block text-xs text-gray-400 mb-1">Image File</label>
-                    <input type="file" id="imageFile" onChange={e => e.target.files && setNewImageFile(e.target.files[0])} accept="image/*" className="w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gold-accent file:text-gray-900 hover:file:bg-opacity-90" required />
+                    <label htmlFor="imageFile" className="block text-xs text-gray-500 dark:text-gray-400 mb-1">Image File</label>
+                    <input type="file" id="imageFile" onChange={e => e.target.files && setNewImageFile(e.target.files[0])} accept="image/*" className="w-full text-sm text-gray-700 dark:text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gold-accent file:text-gray-900 hover:file:bg-opacity-90" required />
                 </div>
                 <div>
-                    <label htmlFor="imageAlt" className="block text-xs text-gray-400 mb-1">Description (Alt Text)</label>
-                    <input type="text" id="imageAlt" value={newImageAlt} onChange={e => setNewImageAlt(e.target.value)} placeholder="A farmer picking coffee..." className="w-full bg-[#222] border-gray-600 rounded-md py-2 px-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-gold-accent" required />
+                    <label htmlFor="imageAlt" className="block text-xs text-gray-500 dark:text-gray-400 mb-1">Description (Alt Text)</label>
+                    <input type="text" id="imageAlt" value={newImageAlt} onChange={e => setNewImageAlt(e.target.value)} placeholder="A farmer picking coffee..." className="w-full bg-[#FDFBF7] dark:bg-[#222] border border-gray-300 dark:border-gray-600 rounded-md py-2 px-3 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-gold-accent" required />
                 </div>
                 <button type="submit" disabled={galleryLoading} className="bg-gold-accent text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition-all disabled:opacity-50 text-sm h-fit">
                     {galleryLoading ? 'Adding...' : 'Add Image'}
@@ -245,9 +270,9 @@ export function AdminPage() {
         </div>
 
         {/* Sample Requests */}
-        <div className="bg-[#181818] p-8 rounded-lg shadow-2xl">
+        <div className="bg-white dark:bg-[#181818] p-8 rounded-lg shadow-2xl transition-colors duration-300">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="font-display text-2xl font-bold text-white">Sample Requests</h2>
+            <h2 className="font-display text-2xl font-bold text-gray-900 dark:text-white">Sample Requests</h2>
             <button onClick={fetchRequests} disabled={requestsLoading} className="bg-gold-accent text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition-all disabled:opacity-50">
               {requestsLoading ? 'Refreshing...' : 'Refresh'}
             </button>
@@ -256,8 +281,8 @@ export function AdminPage() {
           {requestsError && <p className="text-red-500 mb-4">{requestsError}</p>}
           
           <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left text-gray-300">
-              <thead className="text-xs text-gray-400 uppercase bg-[#222]">
+            <table className="w-full text-sm text-left text-gray-600 dark:text-gray-300">
+              <thead className="text-xs text-gray-700 dark:text-gray-400 uppercase bg-[#FDFBF7] dark:bg-[#222]">
                 <tr>
                   <th scope="col" className="px-6 py-3">Date</th>
                   <th scope="col" className="px-6 py-3">Full Name</th>
@@ -273,9 +298,9 @@ export function AdminPage() {
                 {requestsLoading && ( <tr><td colSpan={8} className="text-center py-8"><div className="text-gold-accent">Loading requests...</div></td></tr> )}
                 {!requestsLoading && requests.length === 0 && ( <tr><td colSpan={8} className="text-center py-8 text-gray-500">{requestsError ? 'Could not load data.' : 'No sample requests found.'}</td></tr> )}
                 {requests.map((req) => (
-                  <tr key={req.id} className="bg-[#181818] border-b border-gray-700 hover:bg-[#2a2a2a]">
+                  <tr key={req.id} className="bg-white dark:bg-[#181818] border-b border-gray-200 dark:border-gray-700 hover:bg-[#FDFBF7] dark:hover:bg-[#2a2a2a] transition-colors">
                     <td className="px-6 py-4">{new Date(req.created_at).toLocaleDateString()}</td>
-                    <td className="px-6 py-4 font-medium text-white">{req.full_name}</td>
+                    <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">{req.full_name}</td>
                     <td className="px-6 py-4">{req.company}</td>
                     <td className="px-6 py-4">{req.email}</td>
                     <td className="px-6 py-4">{req.phone}</td>

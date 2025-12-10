@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -9,6 +10,8 @@ import { Footer } from './components/Footer';
 import { OrderPage } from './components/OrderPage';
 import { AdminPage } from './components/AdminPage';
 import { GalleryPage } from './components/GalleryPage';
+import { Services } from './components/Services';
+import { ContactToggle } from './components/ContactToggle';
 
 function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -38,6 +41,7 @@ function App() {
         <Hero />
         <Featured />
         <OurStory />
+        <Services />
         <OurCoffee />
         <Process />
       </>
@@ -47,11 +51,12 @@ function App() {
   const showHeaderFooter = route !== '#/admin';
 
   return (
-    <div className="bg-[#121212]">
+    <div className="bg-[#FDFBF7] dark:bg-[#121212] min-h-screen transition-colors duration-300">
       {showHeaderFooter && <Header />}
       <main>
         {pageContent}
       </main>
+      {showHeaderFooter && <ContactToggle />}
       {showHeaderFooter && <Footer />}
     </div>
   );

@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useSupabase } from '../hooks/useSupabase';
+import { Reveal } from './Reveal';
 
 type GalleryImage = {
   id: number;
@@ -21,7 +23,7 @@ function Lightbox({ image, onClose }: { image: GalleryImage, onClose: () => void
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4 fade-in-up"
+      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 fade-in-up"
       onClick={onClose}
       style={{ animationDuration: '300ms' }}
     >
@@ -95,15 +97,17 @@ export function GalleryPage() {
 
   return (
     <>
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-[#121212]">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-[#FDFBF7] dark:bg-[#121212] transition-colors duration-300 min-h-screen">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16 fade-in-up">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-balance text-white">
-              {t('galleryPage.headline')}
-            </h1>
-            <p className="mt-4 text-lg text-gray-400">
-              {t('galleryPage.subheadline')}
-            </p>
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <Reveal>
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-balance text-gray-900 dark:text-white transition-colors duration-300">
+                {t('galleryPage.headline')}
+              </h1>
+              <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                {t('galleryPage.subheadline')}
+              </p>
+            </Reveal>
           </div>
 
           {isLoading && <p className="text-center text-gold-accent">Loading gallery...</p>}
@@ -113,23 +117,24 @@ export function GalleryPage() {
              images.length > 0 ? (
                 <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6">
                   {images.map((image, index) => (
-                    <div 
+                    <Reveal 
                       key={image.id}
-                      className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group fade-in-up break-inside-avoid mb-4 md:mb-6"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                      onClick={() => setSelectedImage(image)}
+                      className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group break-inside-avoid mb-4 md:mb-6"
+                      delay={index * 100}
                     >
-                      <img 
-                        src={image.src} 
-                        alt={image.alt}
-                        className="w-full transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300 flex items-end p-4">
-                        <p className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
-                          {image.alt}
-                        </p>
+                      <div onClick={() => setSelectedImage(image)}>
+                        <img 
+                          src={image.src} 
+                          alt={image.alt}
+                          className="w-full transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300 flex items-end p-4">
+                          <p className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+                            {image.alt}
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    </Reveal>
                   ))}
                 </div>
               ) : (

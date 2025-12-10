@@ -1,0 +1,72 @@
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #FDFBF7;
+  color: #111827;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+.text-balance {
+  text-wrap: balance;
+}
+.gold-accent {
+  color: #c8a46e;
+}
+.bg-gold-accent {
+  background-color: #c8a46e;
+}
+.border-gold-accent {
+  border-color: #c8a46e;
+}
+.bg-coffee-green {
+  background-color: #0f291e;
+}
+.text-coffee-green {
+  color: #0f291e;
+}
+
+/* Modern Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Elegant easing */
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Hero Animation */
+.fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}

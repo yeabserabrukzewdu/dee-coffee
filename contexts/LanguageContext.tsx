@@ -1,5 +1,4 @@
-
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, PropsWithChildren } from 'react';
 import { translations as enTranslations } from '../locales/en';
 import { translations as amTranslations } from '../locales/am';
 
@@ -24,7 +23,7 @@ const getNestedTranslation = (key: string, translations: Translations): string =
   }, translations) || key;
 };
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+export const LanguageProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [language, setLanguage] = useState<'en' | 'am'>('en');
   
   const t = (key: string): string => {
