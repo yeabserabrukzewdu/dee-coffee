@@ -73,15 +73,15 @@ export function Header() {
       {/* Main Header Bar */}
       <div className="container mx-auto px-6 py-4 flex justify-between items-center relative z-50">
         {/* Logo */}
-        <a href="#" className={`font-display text-2xl font-bold transition-colors ${scrolled || isMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'}`} onClick={closeMenu}>
+        <a href="#/" className={`font-display text-2xl font-bold transition-colors ${scrolled || isMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'}`} onClick={closeMenu}>
           Layodacha
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="/#" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.home')}</a>
-          <a href="/#story" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.story')}</a>
-          <a href="/#coffee" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.coffee')}</a>
+          <a href="#/" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.home')}</a>
+          <a href="#/story" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.story')}</a>
+          <a href="#/coffee" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.coffee')}</a>
           <a href="#/gallery" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.gallery')}</a>
         </nav>
 
@@ -136,9 +136,9 @@ export function Header() {
         }`}
       >
         <div className="flex flex-col px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
-          <a href="/#" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.home')}</a>
-          <a href="/#story" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.story')}</a>
-          <a href="/#coffee" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.coffee')}</a>
+          <a href="#/" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.home')}</a>
+          <a href="#/story" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.story')}</a>
+          <a href="#/coffee" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.coffee')}</a>
           <a href="#/gallery" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.gallery')}</a>
           
           <div className="pt-2 pb-4">

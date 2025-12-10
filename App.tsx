@@ -12,14 +12,15 @@ import { AdminPage } from './components/AdminPage';
 import { GalleryPage } from './components/GalleryPage';
 import { Services } from './components/Services';
 import { ContactToggle } from './components/ContactToggle';
+import { CoffeeDetail } from './components/CoffeeDetail';
 
 function App() {
-  const [route, setRoute] = useState(window.location.hash);
+  const [route, setRoute] = useState(window.location.hash || '#/');
 
   useEffect(() => {
     const handleHashChange = () => {
       window.scrollTo(0, 0);
-      setRoute(window.location.hash);
+      setRoute(window.location.hash || '#/');
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -29,20 +30,30 @@ function App() {
   }, []);
 
   let pageContent;
-  if (route === '#/order') {
+
+  // Simple Router
+  if (route === '#/order' || route.startsWith('#/order')) {
     pageContent = <OrderPage />;
   } else if (route === '#/admin') {
     pageContent = <AdminPage />;
   } else if (route === '#/gallery') {
     pageContent = <GalleryPage />;
+  } else if (route === '#/story') {
+    pageContent = <OurStory />;
+  } else if (route === '#/coffee') {
+    pageContent = <OurCoffee />;
+  } else if (route.startsWith('#/coffee/')) {
+    const coffeeId = route.split('/')[2];
+    pageContent = <CoffeeDetail id={coffeeId} />;
   } else {
+    // Homepage
     pageContent = (
       <>
         <Hero />
         <Featured />
-        <OurStory />
         <Services />
-        <OurCoffee />
+        {/* Restored Export Offerings Section */}
+        <OurCoffee embedded={true} />
         <Process />
       </>
     );

@@ -17,17 +17,17 @@ export function Footer() {
             <div>
               <h4 className="font-bold text-gray-900 dark:text-white mb-4 tracking-wider">{t('footer.shop.title')}</h4>
               <ul>
-                <li className="mb-2"><a href="#" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.all')}</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.subscriptions')}</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.gear')}</a></li>
+                <li className="mb-2"><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.all')}</a></li>
+                <li className="mb-2"><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.subscriptions')}</a></li>
+                <li className="mb-2"><a href="#/order" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.gear')}</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-gray-900 dark:text-white mb-4 tracking-wider">{t('footer.about.title')}</h4>
               <ul>
-                <li className="mb-2"><a href="#story" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.story')}</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.contact')}</a></li>
-                <li className="mb-2"><a href="#" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.faqs')}</a></li>
+                <li className="mb-2"><a href="#/story" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.story')}</a></li>
+                <li className="mb-2"><a href="#/order" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.contact')}</a></li>
+                <li className="mb-2"><a href="#/gallery" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.faqs')}</a></li>
               </ul>
             </div>
             <div>
