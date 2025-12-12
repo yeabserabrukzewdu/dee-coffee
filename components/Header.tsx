@@ -27,6 +27,9 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const navLinkClasses = `${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium relative group`;
+  const underlineClasses = "absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-accent transition-all duration-300 group-hover:w-full";
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-[#FDFBF7]/95 dark:bg-[#181818]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
       
@@ -36,9 +39,9 @@ export function Header() {
           
           {/* Contact Info (Left) */}
           <div className="flex items-center gap-4 md:gap-6">
-            <a href="mailto:info@layodacha.com" className="flex items-center gap-2 hover:text-gold-accent transition-colors">
+            <a href="mailto:info@deecoffee.com" className="flex items-center gap-2 hover:text-gold-accent transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gold-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-              <span className="hidden sm:inline">info@layodacha.com</span>
+              <span className="hidden sm:inline">info@deecoffee.com</span>
             </a>
             <a href="tel:+251911223344" className="flex items-center gap-2 hover:text-gold-accent transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gold-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -71,22 +74,41 @@ export function Header() {
       </div>
 
       {/* Main Header Bar */}
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center relative z-50">
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center relative z-50">
         {/* Logo */}
-        <a href="#/" className={`font-display text-2xl font-bold transition-colors ${scrolled || isMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'}`} onClick={closeMenu}>
-          Layodacha
+        <a href="#/" onClick={closeMenu} className="flex items-center gap-3 group z-20">
+            <img 
+              src="/logos.png" 
+              alt="DEE COFFEE" 
+              className="h-12 md:h-14 w-auto object-contain transform transition-transform duration-300 group-hover:scale-105" 
+            />
+            <span className={`font-display font-bold text-xl md:text-2xl tracking-wide ${scrolled || isMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white drop-shadow-md'} transition-colors duration-300`}>
+              DEE COFFEE
+            </span>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#/" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.home')}</a>
-          <a href="#/story" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.story')}</a>
-          <a href="#/coffee" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.coffee')}</a>
-          <a href="#/gallery" className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium`}>{t('nav.gallery')}</a>
+        {/* Desktop Navigation - Centered Absolutely */}
+        <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-max">
+          <a href="#/" className={navLinkClasses}>
+            {t('nav.home')}
+            <span className={underlineClasses}></span>
+          </a>
+          <a href="#/story" className={navLinkClasses}>
+            {t('nav.story')}
+             <span className={underlineClasses}></span>
+          </a>
+          <a href="#/coffee" className={navLinkClasses}>
+            {t('nav.coffee')}
+             <span className={underlineClasses}></span>
+          </a>
+          <a href="#/gallery" className={navLinkClasses}>
+            {t('nav.gallery')}
+             <span className={underlineClasses}></span>
+          </a>
         </nav>
 
         {/* Desktop Right Side Actions */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4 z-20">
           <button 
             onClick={toggleLanguage}
             className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-semibold w-10 text-center uppercase tracking-wide text-sm`}
@@ -100,7 +122,7 @@ export function Header() {
         </div>
 
         {/* Mobile Actions (Language + Hamburger) */}
-        <div className="flex md:hidden items-center gap-4">
+        <div className="flex md:hidden items-center gap-4 z-20">
           <button 
             onClick={toggleLanguage}
             className={`${scrolled || isMenuOpen ? 'text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600' : 'text-gray-300 border-gray-500'} hover:text-white transition-colors font-semibold text-xs border rounded px-2 py-1`}

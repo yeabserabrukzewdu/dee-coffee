@@ -19,7 +19,7 @@ export function CoffeeCard({ product }: CoffeeCardProps) {
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 dark:opacity-60 transition-opacity duration-300"></div>
         <div className="absolute bottom-4 left-4">
              <span className="bg-gold-accent text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
                 {product.region}

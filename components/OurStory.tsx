@@ -16,11 +16,11 @@ export function OurStory() {
                alt="Ethiopian Landscape" 
                className="w-full h-full object-cover"
              />
-             <div className="absolute inset-0 bg-black/60"></div>
+             <div className="absolute inset-0 bg-transparent dark:bg-black/60 transition-colors duration-300"></div>
          </div>
-         <div className="relative z-10 text-center px-6">
+         <div className="relative z-10 text-center px-6 drop-shadow-lg">
              <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-4 fade-in-up">{t('ourStory.pageTitle')}</h1>
-             <p className="text-xl text-gray-300 max-w-2xl mx-auto fade-in-up" style={{ animationDelay: '100ms' }}>{t('ourStory.pageSubtitle')}</p>
+             <p className="text-xl text-white font-medium max-w-2xl mx-auto fade-in-up" style={{ animationDelay: '100ms' }}>{t('ourStory.pageSubtitle')}</p>
          </div>
       </div>
 
@@ -57,7 +57,7 @@ export function OurStory() {
             </Reveal>
 
             <Reveal delay={400}>
-               <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Layodacha?</h3>
+               <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-4">Why DEE COFFEE?</h3>
                <ul className="space-y-4">
                   {[
                     { title: "Direct Trade", desc: "We skip the middlemen to ensure fair prices for farmers and better value for roasters." },

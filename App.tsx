@@ -13,6 +13,7 @@ import { GalleryPage } from './components/GalleryPage';
 import { Services } from './components/Services';
 import { ContactToggle } from './components/ContactToggle';
 import { CoffeeDetail } from './components/CoffeeDetail';
+import { HomeAbout } from './components/HomeAbout';
 
 function App() {
   const [route, setRoute] = useState(window.location.hash || '#/');
@@ -46,13 +47,13 @@ function App() {
     const coffeeId = route.split('/')[2];
     pageContent = <CoffeeDetail id={coffeeId} />;
   } else {
-    // Homepage
+    // Homepage Structure updated
     pageContent = (
       <>
         <Hero />
+        <HomeAbout />
         <Featured />
         <Services />
-        {/* Restored Export Offerings Section */}
         <OurCoffee embedded={true} />
         <Process />
       </>

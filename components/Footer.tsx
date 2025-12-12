@@ -11,7 +11,7 @@ export function Footer() {
         <Reveal>
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white mb-4">Layodacha</h3>
+              <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white mb-4">DEE COFFEE</h3>
               <p className="text-sm">{t('footer.tagline')}</p>
             </div>
             <div>

@@ -36,12 +36,12 @@ export function CoffeeDetail({ id }: CoffeeDetailProps) {
           alt={product.name} 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <div className="text-center px-6">
+        <div className="absolute inset-0 bg-transparent dark:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+          <div className="text-center px-6 drop-shadow-lg">
             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-4 fade-in-up">
               {product.name}
             </h1>
-            <p className="text-xl text-gold-accent font-medium tracking-wider uppercase fade-in-up" style={{ animationDelay: '200ms' }}>
+            <p className="text-xl text-gold-accent font-medium tracking-wider uppercase fade-in-up shadow-black" style={{ animationDelay: '200ms' }}>
               {product.region}
             </p>
           </div>

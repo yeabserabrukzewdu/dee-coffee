@@ -4,7 +4,7 @@ import { useSupabase } from '../hooks/useSupabase';
 
 // In a real application, use environment variables.
 const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'layodacha_admin_password';
+const ADMIN_PASSWORD = 'deecoffee_admin_password';
 
 type SampleRequest = {
   id: number;

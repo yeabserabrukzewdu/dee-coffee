@@ -39,11 +39,27 @@ export const translations = {
       desc: 'We handle all documentation, customs clearance, and freight forwarding to ensure your container arrives on time, anywhere in the world.',
     }
   },
+  supplyChain: {
+    headline: 'Sourced Direct from our Farms',
+    subheadline: 'Reliable Supply Chain',
+    direct: {
+      title: 'Direct Trade',
+      desc: 'We build lasting relationships with farmers, ensuring fair prices and sustainable livelihoods.'
+    },
+    quality: {
+      title: 'Consistent Quality',
+      desc: 'From cherry selection to final grading, we maintain strict standards at every step.'
+    },
+    logistics: {
+      title: 'Efficient Logistics',
+      desc: 'Our integrated logistics network ensures your coffee arrives on time and in perfect condition.'
+    }
+  },
   ourStory: {
     pageTitle: 'Our Heritage',
     pageSubtitle: 'Rooted in the birthplace of coffee, dedicated to the future of farming.',
     headline: 'Ethiopian Coffee Excellence',
-    body: 'Layodacha Coffee Co. is a premier exporter of green coffee beans. Established with a vision to bridge the gap between Ethiopian farmers and global roasters, we operate with full transparency. Our network covers the most prestigious growing regions including Sidama, Yirgacheffe, and Harrar.',
+    body: 'DEE COFFEE is a premier exporter of green coffee beans. Established with a vision to bridge the gap between Ethiopian farmers and global roasters, we operate with full transparency. Our network covers the most prestigious growing regions including Sidama, Yirgacheffe, and Harrar.',
     history: 'Our journey began over two decades ago in the highlands of Oromia. What started as a small family collection station has grown into a fully integrated export business. We understand that the quality of the cup depends entirely on the livelihood of the farmer. This philosophy drives our "Farmer First" approach.',
     mission: 'Our mission is simple: To deliver the authentic taste of Ethiopia while empowering the communities that cultivate it. We reinvest a percentage of our profits into local infrastructure projects, including schools and clean water initiatives in the growing regions.',
   },
@@ -58,18 +74,21 @@ export const translations = {
   },
   process: {
     headline: 'From Farm to Container',
-    subheadline: 'An integrated supply chain focused on quality preservation and efficiency.',
+    subheadline: 'A meticulous journey ensuring quality preservation and complete traceability.',
     sourcing: {
-      title: 'Harvesting',
-      description: 'Selective hand-picking of red cherries at optimal altitude for maximum density.',
+      title: 'Harvesting & Sourcing',
+      description: 'Selective hand-picking of red cherries at optimal altitude.',
+      detail: 'We work directly with smallholder farmers in high-altitude regions (1,800m+). Only the ripest red cherries are hand-picked to ensure maximum sugar content and density. This initial selection is crucial for the final cup score.'
     },
     roasting: {
-      title: 'Processing',
-      description: 'Washed, Natural, and Anaerobic processing methods utilizing modern raised beds.',
+      title: 'Processing & Drying',
+      description: 'Washed, Natural, and Anaerobic methods.',
+      detail: 'At our washing stations, cherries are pulped and fermented with pristine mountain water (Washed) or dried whole on raised African beds (Natural). We constantly rotate the beans to ensure even drying and prevent defects.'
     },
     brewing: {
-      title: 'Export',
-      description: 'Bagging in GrainPro, container loading, and efficient shipping to global ports.',
+      title: 'Milling & Export',
+      description: 'Sorting, bagging, and global logistics.',
+      detail: 'Once dried to 11.5% moisture, the parchment is hulled, color-sorted, and hand-picked. We pack in GrainPro bags to lock in freshness before loading into containers for shipment to Djibouti port and beyond.'
     },
   },
   footer: {
@@ -87,7 +106,7 @@ export const translations = {
       faqs: 'Certificates',
     },
     follow: 'Connect',
-    copyright: `© ${new Date().getFullYear()} Layodacha Coffee Exporters. All Rights Reserved.`,
+    copyright: `© ${new Date().getFullYear()} DEE COFFEE Exporters. All Rights Reserved.`,
   },
   coffee: {
     specs: {
