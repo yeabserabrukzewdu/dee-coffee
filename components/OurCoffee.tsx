@@ -33,19 +33,19 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
            {/* Background Image */}
            <div className="absolute inset-0 z-0">
              <img 
-                src="OUR COFFEE.jpg" 
+               src="OUR COFFEE.jpg" 
                alt="Green Coffee Beans" 
                className="w-full h-full object-cover"
              />
-             <div className="absolute inset-0 bg-[#FDFBF7]/70 dark:bg-black/60 transition-opacity duration-300"></div>
+             <div className="absolute inset-0 bg-black/30 dark:bg-black/60 transition-opacity duration-300"></div>
            </div>
            
            <div className="container mx-auto px-6 text-center relative z-10 drop-shadow-xl pt-24">
               <Reveal>
-                  <h1 className="font-display text-5xl md:text-6xl font-bold text-[#2C1810] dark:text-white mb-6 shadow-none dark:shadow-black">
+                  <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
                       {t('ourCoffee.headline')}
                   </h1>
-                  <p className="text-xl text-[#4A3728] dark:text-gray-200 max-w-2xl mx-auto shadow-none dark:shadow-black font-medium">
+                  <p className="text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-md font-medium">
                       {t('ourCoffee.subheadline')}
                   </p>
               </Reveal>

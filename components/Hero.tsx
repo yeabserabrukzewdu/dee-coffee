@@ -39,17 +39,17 @@ export function Hero() {
           className={`absolute top-0 left-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${currentSlide === index ? 'opacity-100' : 'opacity-0'}`}
           style={{ backgroundImage: `url('${slide.image}')` }}
         >
-          {/* Overlay: Light/Whiteish in Light Mode (for brown text), Dark in Dark Mode */}
-          <div className="w-full h-full bg-[#FDFBF7]/70 dark:bg-black/60 transition-colors duration-1000"></div>
+          {/* Overlay: Slightly dark to ensure text readability, but keeps image colors true */}
+          <div className="w-full h-full bg-black/20 dark:bg-black/50 transition-colors duration-1000"></div>
         </div>
       ))}
 
       <div className="relative z-10 px-4 drop-shadow-xl">
         <div key={`${currentSlide}-${language}`} className="fade-in-up">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold text-balance text-[#2C1810] dark:text-white shadow-none dark:shadow-black">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold text-balance text-white shadow-black drop-shadow-lg">
             {t(`hero.${currentSlideKey}.headline`)}
           </h1>
-          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-[#4A3728] dark:text-gray-100 text-balance font-medium shadow-none dark:shadow-black">
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-100 text-balance font-medium shadow-black drop-shadow-md">
             {t(`hero.${currentSlideKey}.subheadline`)}
           </p>
         </div>
@@ -64,14 +64,14 @@ export function Hero() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 shadow-md ${currentSlide === index ? 'bg-gold-accent scale-125' : 'bg-[#4A3728]/50 hover:bg-[#4A3728] dark:bg-white/70 dark:hover:bg-white'}`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 shadow-md ${currentSlide === index ? 'bg-gold-accent scale-125' : 'bg-white/50 hover:bg-white'}`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Gradient Fade Overlay */}
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#FDFBF7] dark:from-[#121212] via-[#FDFBF7]/60 dark:via-[#121212]/60 to-transparent z-20 pointer-events-none"></div>
+      {/* Gradient Fade Overlay - Reduced opacity/height to show more image */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#FDFBF7] dark:from-[#121212] to-transparent z-20 pointer-events-none opacity-80"></div>
 
       {/* Foam/Wave Texture Bottom Transition */}
       <div className="absolute bottom-0 left-0 w-full z-20 pointer-events-none leading-none">
