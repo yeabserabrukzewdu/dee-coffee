@@ -33,19 +33,19 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
            {/* Background Image */}
            <div className="absolute inset-0 z-0">
              <img 
-               src="OUR COFFEE.jpg" 
+                src="OUR COFFEE.jpg" 
                alt="Green Coffee Beans" 
                className="w-full h-full object-cover"
              />
-             <div className="absolute inset-0 bg-black/60 transition-opacity duration-300"></div>
+             <div className="absolute inset-0 bg-[#FDFBF7]/70 dark:bg-black/60 transition-opacity duration-300"></div>
            </div>
            
            <div className="container mx-auto px-6 text-center relative z-10 drop-shadow-xl pt-24">
               <Reveal>
-                  <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 shadow-black">
+                  <h1 className="font-display text-5xl md:text-6xl font-bold text-[#2C1810] dark:text-white mb-6 shadow-none dark:shadow-black">
                       {t('ourCoffee.headline')}
                   </h1>
-                  <p className="text-xl text-gray-200 max-w-2xl mx-auto shadow-black font-medium">
+                  <p className="text-xl text-[#4A3728] dark:text-gray-200 max-w-2xl mx-auto shadow-none dark:shadow-black font-medium">
                       {t('ourCoffee.subheadline')}
                   </p>
               </Reveal>
@@ -58,10 +58,10 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
         {/* Section Header - Only shown when embedded */}
         {embedded && (
             <Reveal className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-balance text-gray-900 dark:text-white transition-colors duration-300">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-balance text-[#2C1810] dark:text-white transition-colors duration-300">
                 {t('ourCoffee.headline')}
               </h2>
-              <p className="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
+              <p className="mt-3 text-lg text-[#4A3728] dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
                 {t('ourCoffee.subheadline')}
               </p>
             </Reveal>
@@ -69,15 +69,15 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
         
         {/* Filters */}
         <Reveal delay={100} className="flex justify-center mb-16">
-            <div className="inline-flex bg-white dark:bg-[#222] p-2 rounded-full shadow-lg border border-gray-100 dark:border-gray-800">
+            <div className="inline-flex bg-white dark:bg-[#222] p-2 rounded-full shadow-lg border border-[#4A3728]/10 dark:border-gray-800">
                 {['All', 'Washed', 'Natural'].map((type) => (
                     <button
                         key={type}
                         onClick={() => setFilter(type as any)}
                         className={`px-8 py-3 rounded-full text-base font-bold transition-all duration-300 ${
                             filter === type 
-                            ? 'bg-gold-accent text-gray-900 shadow-md transform scale-105' 
-                            : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                            ? 'bg-gold-accent text-[#2C1810] shadow-md transform scale-105' 
+                            : 'text-[#4A3728] hover:text-[#2C1810] dark:text-gray-500 dark:hover:text-white'
                         }`}
                     >
                         {type === 'All' ? t('ourCoffee.filters.all') : 
@@ -98,7 +98,7 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
         </div>
 
         {filteredProducts.length === 0 && (
-             <div className="text-center py-20 text-gray-500">
+             <div className="text-center py-20 text-[#4A3728] dark:text-gray-500">
                  No products found for this category.
              </div>
         )}

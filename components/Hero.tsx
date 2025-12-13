@@ -32,29 +32,29 @@ export function Hero() {
   const currentSlideKey = slidesData[currentSlide].key;
 
   return (
-    <section className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {slidesData.map((slide, index) => (
         <div
           key={index}
           className={`absolute top-0 left-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${currentSlide === index ? 'opacity-100' : 'opacity-0'}`}
           style={{ backgroundImage: `url('${slide.image}')` }}
         >
-          {/* Dark overlay only in dark mode */}
-          <div className="w-full h-full bg-transparent dark:bg-black/60 transition-colors duration-1000"></div>
+          {/* Overlay: Light/Whiteish in Light Mode (for brown text), Dark in Dark Mode */}
+          <div className="w-full h-full bg-[#FDFBF7]/70 dark:bg-black/60 transition-colors duration-1000"></div>
         </div>
       ))}
 
       <div className="relative z-10 px-4 drop-shadow-xl">
         <div key={`${currentSlide}-${language}`} className="fade-in-up">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold text-balance text-white shadow-black">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold text-balance text-[#2C1810] dark:text-white shadow-none dark:shadow-black">
             {t(`hero.${currentSlideKey}.headline`)}
           </h1>
-          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-100 text-balance font-medium shadow-black">
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-[#4A3728] dark:text-gray-100 text-balance font-medium shadow-none dark:shadow-black">
             {t(`hero.${currentSlideKey}.subheadline`)}
           </p>
         </div>
         
-        <a href="#/order" className="mt-8 inline-block bg-gold-accent text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
+        <a href="#/order" className="mt-8 inline-block bg-gold-accent text-[#2C1810] font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
           {t('hero.shopButton')}
         </a>
       </div>
@@ -64,7 +64,7 @@ export function Hero() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 shadow-md ${currentSlide === index ? 'bg-gold-accent scale-125' : 'bg-white/70 hover:bg-white'}`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 shadow-md ${currentSlide === index ? 'bg-gold-accent scale-125' : 'bg-[#4A3728]/50 hover:bg-[#4A3728] dark:bg-white/70 dark:hover:bg-white'}`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

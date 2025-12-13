@@ -27,7 +27,8 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const navLinkClasses = `${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-medium relative group`;
+  // Updated colors: Brown in light mode, White/Gray in dark mode
+  const navLinkClasses = `text-[#4A3728] hover:text-[#2C1810] dark:text-gray-300 dark:hover:text-white transition-colors font-medium relative group`;
   const underlineClasses = "absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-accent transition-all duration-300 group-hover:w-full";
 
   return (
@@ -78,11 +79,11 @@ export function Header() {
         {/* Logo */}
         <a href="#/" onClick={closeMenu} className="flex items-center gap-3 group z-20">
             <img 
-              src="/logos.png" 
+               src="/logos.png"
               alt="DEE COFFEE" 
               className="h-12 md:h-14 w-auto object-contain transform transition-transform duration-300 group-hover:scale-105" 
             />
-            <span className={`font-display font-bold text-xl md:text-2xl tracking-wide ${scrolled || isMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white drop-shadow-md'} transition-colors duration-300`}>
+            <span className={`font-display font-bold text-xl md:text-2xl tracking-wide ${scrolled || isMenuOpen ? 'text-[#2C1810] dark:text-white' : 'text-[#2C1810] dark:text-white drop-shadow-md'} transition-colors duration-300`}>
               DEE COFFEE
             </span>
         </a>
@@ -111,12 +112,12 @@ export function Header() {
         <div className="hidden lg:flex items-center space-x-4 z-20">
           <button 
             onClick={toggleLanguage}
-            className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-semibold w-10 text-center uppercase tracking-wide text-sm`}
+            className={`text-[#4A3728] hover:text-[#2C1810] dark:text-gray-300 dark:hover:text-white transition-colors font-semibold w-10 text-center uppercase tracking-wide text-sm`}
             aria-label="Toggle language"
           >
             {language === 'en' ? 'አማ' : 'EN'}
           </button>
-          <a href="#/order" className="bg-gold-accent text-gray-900 font-bold py-2.5 px-6 rounded-full hover:bg-opacity-90 transition-all text-sm shadow-md hover:shadow-lg">
+          <a href="#/order" className="bg-gold-accent text-[#2C1810] font-bold py-2.5 px-6 rounded-full hover:bg-opacity-90 transition-all text-sm shadow-md hover:shadow-lg">
             {t('nav.shop')}
           </a>
         </div>
@@ -125,14 +126,14 @@ export function Header() {
         <div className="flex lg:hidden items-center gap-4 z-20">
           <button 
             onClick={toggleLanguage}
-            className={`${scrolled || isMenuOpen ? 'text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600' : 'text-gray-300 border-gray-500'} hover:text-white transition-colors font-semibold text-xs border rounded px-2 py-1`}
+            className={`${scrolled || isMenuOpen ? 'text-[#4A3728] dark:text-gray-300 border-[#4A3728] dark:border-gray-600' : 'text-[#4A3728] dark:text-gray-300 border-[#4A3728]'} hover:text-[#2C1810] dark:hover:text-white transition-colors font-semibold text-xs border rounded px-2 py-1`}
             aria-label="Toggle language"
           >
             {language === 'en' ? 'አማ' : 'EN'}
           </button>
 
           <button 
-            className={`${scrolled || isMenuOpen ? 'text-gray-900 dark:text-white' : 'text-white'} focus:outline-none p-1 transition-colors`}
+            className={`${scrolled || isMenuOpen ? 'text-[#2C1810] dark:text-white' : 'text-[#2C1810] dark:text-white'} focus:outline-none p-1 transition-colors`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -151,28 +152,28 @@ export function Header() {
 
       {/* Mobile Slide-out Menu */}
       <div 
-        className={`absolute top-full left-0 right-0 bg-[#FDFBF7] dark:bg-[#181818] border-t border-gray-200 dark:border-gray-800 shadow-2xl transition-all duration-300 ease-in-out lg:hidden -z-10 overflow-hidden ${
+        className={`absolute top-full left-0 right-0 bg-[#FDFBF7] dark:bg-[#181818] border-t border-[#4A3728]/10 dark:border-gray-800 shadow-2xl transition-all duration-300 ease-in-out lg:hidden -z-10 overflow-hidden ${
           isMenuOpen 
             ? 'translate-y-0 opacity-100 visible' 
             : '-translate-y-full opacity-0 invisible'
         }`}
       >
         <div className="flex flex-col px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
-          <a href="#/" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.home')}</a>
-          <a href="#/story" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.story')}</a>
-          <a href="#/coffee" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.coffee')}</a>
-          <a href="#/gallery" onClick={closeMenu} className="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-gray-100 dark:border-gray-800">{t('nav.gallery')}</a>
+          <a href="#/" onClick={closeMenu} className="text-lg font-medium text-[#4A3728] dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-[#4A3728]/10 dark:border-gray-800">{t('nav.home')}</a>
+          <a href="#/story" onClick={closeMenu} className="text-lg font-medium text-[#4A3728] dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-[#4A3728]/10 dark:border-gray-800">{t('nav.story')}</a>
+          <a href="#/coffee" onClick={closeMenu} className="text-lg font-medium text-[#4A3728] dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-[#4A3728]/10 dark:border-gray-800">{t('nav.coffee')}</a>
+          <a href="#/gallery" onClick={closeMenu} className="text-lg font-medium text-[#4A3728] dark:text-gray-300 hover:text-gold-accent transition-colors block py-2 border-b border-[#4A3728]/10 dark:border-gray-800">{t('nav.gallery')}</a>
           
           <div className="pt-2 pb-4">
-            <a href="#/order" onClick={closeMenu} className="block w-full text-center bg-gold-accent text-gray-900 font-bold py-3 rounded-full hover:bg-opacity-90 transition-all shadow-lg">
+            <a href="#/order" onClick={closeMenu} className="block w-full text-center bg-gold-accent text-[#2C1810] font-bold py-3 rounded-full hover:bg-opacity-90 transition-all shadow-lg">
               {t('nav.shop')}
             </a>
           </div>
           
           {/* Mobile Socials in Menu */}
-          <div className="flex justify-center gap-6 pt-4 border-t border-gray-100 dark:border-gray-800">
-             <a href="#" className="text-gray-500 hover:text-gold-accent"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-             <a href="#" className="text-gray-500 hover:text-gold-accent"><svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <div className="flex justify-center gap-6 pt-4 border-t border-[#4A3728]/10 dark:border-gray-800">
+             <a href="#" className="text-[#4A3728] dark:text-gray-500 hover:text-gold-accent"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+             <a href="#" className="text-[#4A3728] dark:text-gray-500 hover:text-gold-accent"><svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
           </div>
         </div>
       </div>

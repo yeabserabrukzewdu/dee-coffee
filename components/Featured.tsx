@@ -6,10 +6,10 @@ import { Reveal } from './Reveal';
 export function Featured() {
   const { t } = useTranslation();
   return (
-    <section className="py-12 bg-[#FDFBF7] dark:bg-[#1a1a1a] text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <section className="py-12 bg-[#FDFBF7] dark:bg-[#1a1a1a] text-[#4A3728] dark:text-gray-200 transition-colors duration-300">
       <div className="container mx-auto px-6 text-center">
         <Reveal>
-          <h3 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-8">
+          <h3 className="text-sm font-bold tracking-widest text-[#4A3728] dark:text-gray-500 uppercase mb-8">
             {t('featured.title')}
           </h3>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-80">
@@ -27,7 +27,7 @@ export function Featured() {
                <span className="text-xs font-bold">Rainforest</span>
             </div>
             <div className="flex flex-col items-center">
-               <div className="w-16 h-16 border-4 border-black dark:border-white rounded-full flex items-center justify-center font-bold text-black dark:text-white mb-2 transition-colors duration-300">ECA</div>
+               <div className="w-16 h-16 border-4 border-[#2C1810] dark:border-white rounded-full flex items-center justify-center font-bold text-[#2C1810] dark:text-white mb-2 transition-colors duration-300">ECA</div>
                <span className="text-xs font-bold">Ethiopian Coffee Assn</span>
             </div>
           </div>

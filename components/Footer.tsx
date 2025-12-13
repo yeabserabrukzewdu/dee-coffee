@@ -6,16 +6,16 @@ import { Reveal } from './Reveal';
 export function Footer() {
   const { t } = useTranslation();
   return (
-    <footer className="bg-[#F5F2EB] dark:bg-[#181818] text-gray-600 dark:text-gray-400 transition-colors duration-300">
+    <footer className="bg-[#F5F2EB] dark:bg-[#181818] text-[#4A3728] dark:text-gray-400 transition-colors duration-300">
       <div className="container mx-auto px-6 py-12">
         <Reveal>
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white mb-4">DEE COFFEE</h3>
+              <h3 className="font-display text-xl font-bold text-[#2C1810] dark:text-white mb-4">DEE COFFEE</h3>
               <p className="text-sm">{t('footer.tagline')}</p>
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 dark:text-white mb-4 tracking-wider">{t('footer.shop.title')}</h4>
+              <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.shop.title')}</h4>
               <ul>
                 <li className="mb-2"><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.all')}</a></li>
                 <li className="mb-2"><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.subscriptions')}</a></li>
@@ -23,7 +23,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 dark:text-white mb-4 tracking-wider">{t('footer.about.title')}</h4>
+              <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.about.title')}</h4>
               <ul>
                 <li className="mb-2"><a href="#/story" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.story')}</a></li>
                 <li className="mb-2"><a href="#/order" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.contact')}</a></li>
@@ -31,7 +31,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 dark:text-white mb-4 tracking-wider">{t('footer.follow')}</h4>
+              <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.follow')}</h4>
               <div className="flex space-x-4">
                 <a href="#" aria-label="Facebook">
                   <svg className="w-6 h-6 hover:text-gold-accent dark:hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z" /></svg>
@@ -45,7 +45,7 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm">
+          <div className="mt-12 pt-8 border-t border-[#4A3728]/10 dark:border-gray-800 text-center text-sm">
             <p>{t('footer.copyright')}</p>
           </div>
         </Reveal>

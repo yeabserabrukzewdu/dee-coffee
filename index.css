@@ -5,7 +5,7 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   background-color: #FDFBF7;
-  color: #111827;
+  color: #4A3728; /* Coffee Brown */
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

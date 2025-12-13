@@ -33,13 +33,13 @@ const ProcessStep = ({ number, title, description, detail, image, isReversed = f
     <div className="w-full md:w-1/2">
       <Reveal delay={200}>
         <div className="flex items-center gap-4 mb-6">
-           <span className="font-display text-6xl md:text-8xl font-bold text-gray-200 dark:text-gray-800 select-none">
+           <span className="font-display text-6xl md:text-8xl font-bold text-[#E6D5BC] dark:text-gray-800 select-none">
              {number}
            </span>
            <div className="h-px bg-gold-accent flex-grow max-w-[100px]"></div>
         </div>
         
-        <h3 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <h3 className="font-display text-3xl md:text-4xl font-bold text-[#2C1810] dark:text-white mb-4">
           {title}
         </h3>
         
@@ -47,7 +47,7 @@ const ProcessStep = ({ number, title, description, detail, image, isReversed = f
           {description}
         </p>
 
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+        <p className="text-[#4A3728] dark:text-gray-300 leading-relaxed text-lg">
           {detail}
         </p>
       </Reveal>
@@ -82,7 +82,7 @@ export function Process() {
             title={t('process.sourcing.title')}
             description={t('process.sourcing.description')}
             detail={t('process.sourcing.detail')}
-            image="https://images.unsplash.com/photo-1611162458324-a29d4432c69f?q=80&w=1974&auto=format&fit=crop"
+            image="hand picking.png"
           />
           
           <ProcessStep 
@@ -90,7 +90,7 @@ export function Process() {
             title={t('process.roasting.title')}
             description={t('process.roasting.description')}
             detail={t('process.roasting.detail')}
-            image="https://images.unsplash.com/photo-1596627685016-168c4d3725b8?q=80&w=2070&auto=format&fit=crop"
+            image="drying.webp"
             isReversed={true}
           />
           
@@ -99,12 +99,12 @@ export function Process() {
             title={t('process.brewing.title')}
             description={t('process.brewing.description')}
             detail={t('process.brewing.detail')}
-            image="https://images.unsplash.com/photo-1580975440626-d3b145695033?q=80&w=2070&auto=format&fit=crop"
+            image="export.webp"
           />
         </div>
 
         <Reveal className="text-center mt-12">
-            <a href="#/order" className="inline-block bg-gold-accent text-gray-900 font-bold py-4 px-10 rounded-full text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <a href="#/order" className="inline-block bg-gold-accent text-[#2C1810] font-bold py-4 px-10 rounded-full text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 Start Your Order
             </a>
         </Reveal>
