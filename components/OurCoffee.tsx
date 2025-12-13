@@ -29,13 +29,23 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
       
       {/* Coffee Page Hero - Only shown when NOT embedded */}
       {!embedded && (
-        <div className="relative py-32 bg-[#0f291e]">
-           <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+           {/* Background Image */}
+           <div className="absolute inset-0 z-0">
+             <img 
+               src="OUR COFFEE.jpg" 
+               alt="Green Coffee Beans" 
+               className="w-full h-full object-cover"
+             />
+             <div className="absolute inset-0 bg-black/60 transition-opacity duration-300"></div>
+           </div>
+           
+           <div className="container mx-auto px-6 text-center relative z-10 drop-shadow-xl pt-24">
               <Reveal>
-                  <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
+                  <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 shadow-black">
                       {t('ourCoffee.headline')}
                   </h1>
-                  <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                  <p className="text-xl text-gray-200 max-w-2xl mx-auto shadow-black font-medium">
                       {t('ourCoffee.subheadline')}
                   </p>
               </Reveal>

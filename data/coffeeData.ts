@@ -5,7 +5,7 @@ import type { CoffeeProduct } from '../types';
 export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longDescription' | 'tastingNotes'>[] = [
   {
     id: 'guji',
-    image: 'https://images.unsplash.com/photo-1559525839-4f3460eb539c?q=80&w=2070&auto=format&fit=crop',
+    image: '/GUJI.jpg',
     price: 0,
     region: 'Guji Zone',
     altitude: '2,000 - 2,200 masl',
@@ -17,7 +17,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'yirgacheffe',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1974&auto=format&fit=crop',
+    image: 'YIRGACHEFE.jpg',
     price: 0, 
     region: 'Gedeo Zone',
     altitude: '1,950 - 2,150 masl',
@@ -29,7 +29,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'sidama',
-    image: 'https://images.unsplash.com/photo-1587393855524-087f83d95bc9?q=80&w=1960&auto=format&fit=crop',
+    image: 'SIDAMA.webp',
     price: 0,
     region: 'Sidama Region',
     altitude: '1,800 - 2,200 masl',
@@ -41,7 +41,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'harrar',
-    image: 'https://images.unsplash.com/photo-1611854779393-1b2ae5460963?q=80&w=2070&auto=format&fit=crop',
+    image: 'HARRAR.jpg',
     price: 0,
     region: 'East Hararghe',
     altitude: '1,500 - 1,800 masl',
@@ -53,7 +53,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'limmu',
-    image: 'https://images.unsplash.com/photo-1621914809838-958b7633b4d4?q=80&w=1974&auto=format&fit=crop',
+    image: 'LIMMU.jpg',
     price: 0,
     region: 'Jimma Zone',
     altitude: '1,400 - 2,000 masl',
@@ -65,7 +65,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'bale',
-    image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1961&auto=format&fit=crop',
+    image: 'BALE.jpg',
     price: 0,
     region: 'Bale Zone',
     altitude: '1,800 - 2,300 masl',

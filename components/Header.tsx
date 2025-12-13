@@ -74,7 +74,7 @@ export function Header() {
       </div>
 
       {/* Main Header Bar */}
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center relative z-50">
+      <div className="container mx-auto px-6 py-5 flex justify-between items-center relative z-50">
         {/* Logo */}
         <a href="#/" onClick={closeMenu} className="flex items-center gap-3 group z-20">
             <img 
@@ -87,8 +87,8 @@ export function Header() {
             </span>
         </a>
 
-        {/* Desktop Navigation - Centered Absolutely */}
-        <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-max">
+        {/* Desktop Navigation - Centered Absolutely - visible only on LG and up */}
+        <nav className="hidden lg:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-max">
           <a href="#/" className={navLinkClasses}>
             {t('nav.home')}
             <span className={underlineClasses}></span>
@@ -107,8 +107,8 @@ export function Header() {
           </a>
         </nav>
 
-        {/* Desktop Right Side Actions */}
-        <div className="hidden md:flex items-center space-x-4 z-20">
+        {/* Desktop Right Side Actions - visible only on LG and up */}
+        <div className="hidden lg:flex items-center space-x-4 z-20">
           <button 
             onClick={toggleLanguage}
             className={`${scrolled ? 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' : 'text-gray-300 hover:text-white'} transition-colors font-semibold w-10 text-center uppercase tracking-wide text-sm`}
@@ -121,8 +121,8 @@ export function Header() {
           </a>
         </div>
 
-        {/* Mobile Actions (Language + Hamburger) */}
-        <div className="flex md:hidden items-center gap-4 z-20">
+        {/* Mobile/Tablet Actions (Language + Hamburger) - visible on screens smaller than LG */}
+        <div className="flex lg:hidden items-center gap-4 z-20">
           <button 
             onClick={toggleLanguage}
             className={`${scrolled || isMenuOpen ? 'text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600' : 'text-gray-300 border-gray-500'} hover:text-white transition-colors font-semibold text-xs border rounded px-2 py-1`}
@@ -151,7 +151,7 @@ export function Header() {
 
       {/* Mobile Slide-out Menu */}
       <div 
-        className={`absolute top-full left-0 right-0 bg-[#FDFBF7] dark:bg-[#181818] border-t border-gray-200 dark:border-gray-800 shadow-2xl transition-all duration-300 ease-in-out md:hidden -z-10 overflow-hidden ${
+        className={`absolute top-full left-0 right-0 bg-[#FDFBF7] dark:bg-[#181818] border-t border-gray-200 dark:border-gray-800 shadow-2xl transition-all duration-300 ease-in-out lg:hidden -z-10 overflow-hidden ${
           isMenuOpen 
             ? 'translate-y-0 opacity-100 visible' 
             : '-translate-y-full opacity-0 invisible'

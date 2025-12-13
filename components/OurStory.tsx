@@ -12,7 +12,7 @@ export function OurStory() {
       <div className="relative h-[50vh] flex items-center justify-center">
          <div className="absolute inset-0 z-0">
              <img 
-               src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" 
+               src="/COMAPNY.png" 
                alt="Ethiopian Landscape" 
                className="w-full h-full object-cover"
              />
