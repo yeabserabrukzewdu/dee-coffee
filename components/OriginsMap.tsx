@@ -1,92 +1,183 @@
 
-import React, { useState } from 'react';
-import { EthiopiaMap } from './EthiopiaMap';
+import React, { useState, useEffect, useRef } from 'react';
 import { regionsData } from '../data/regions';
+import { coffeeProducts } from '../data/coffeeData';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Reveal } from './Reveal';
 
 export function OriginsMap() {
   const { t } = useTranslation();
-  const [selectedRegionId, setSelectedRegionId] = useState<string>('yirgacheffe');
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const timerRef = useRef<number | null>(null);
 
-  const selectedRegion = regionsData.find(r => r.id === selectedRegionId) || regionsData[0];
+  const activeRegion = regionsData[activeIndex];
+
+  // Handle auto-rotation
+  useEffect(() => {
+    if (isAutoPlaying) {
+      timerRef.current = window.setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % regionsData.length);
+      }, 6000); // Switch every 6 seconds
+    }
+    return () => {
+      if (timerRef.current) window.clearInterval(timerRef.current);
+    };
+  }, [isAutoPlaying]);
+
+  const handleManualSelect = (index: number) => {
+    setActiveIndex(index);
+    setIsAutoPlaying(false); // Stop auto-play if user interacts
+    if (timerRef.current) window.clearInterval(timerRef.current);
+  };
 
   return (
-    <section className="relative min-h-[800px] flex items-center overflow-hidden bg-gray-900 transition-all duration-700">
+    <section className="relative h-[800px] md:h-[900px] bg-[#121212] overflow-hidden text-white group/slider">
       
-      {/* Dynamic Background */}
-      {regionsData.map((region) => (
-        <div
-          key={region.id}
-          className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${selectedRegionId === region.id ? 'opacity-100' : 'opacity-0'}`}
-          style={{ backgroundImage: `url('${region.image}')` }}
-        />
-      ))}
-      <div className="absolute inset-0 bg-transparent dark:bg-black/60 transition-colors duration-300"></div>
-      
-      {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 py-20">
-        <Reveal>
-            <div className="text-center mb-12">
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">Explore Origins</h2>
-                <p className="text-white text-lg max-w-2xl mx-auto drop-shadow-md">Click on a region to discover its unique terroir and flavor profile.</p>
+      {/* Background Layer with Transitions */}
+      {regionsData.map((region, index) => {
+        // Find matching product data to use its image
+        const product = coffeeProducts.find(p => p.id === region.id);
+        const imageSrc = product ? product.image : region.image;
+
+        return (
+          <div
+            key={region.id}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+              index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            {/* Image with Ken Burns Effect */}
+            <div className={`absolute inset-0 w-full h-full transform transition-transform duration-[10000ms] ease-linear ${index === activeIndex ? 'scale-110' : 'scale-100'}`}>
+               <img
+                  src={imageSrc}
+                  alt={region.name}
+                  className="w-full h-full object-cover"
+               />
             </div>
-        </Reveal>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Map Column */}
-          <div className="order-2 lg:order-1 h-[400px] lg:h-[600px]">
-             <EthiopiaMap 
-                selectedRegionId={selectedRegionId} 
-                onSelectRegion={setSelectedRegionId} 
-             />
+            {/* Gradient Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30"></div>
           </div>
+        );
+      })}
 
-          {/* Info Column */}
-          <div className="order-1 lg:order-2">
-            <Reveal key={selectedRegionId} className="bg-white/10 dark:bg-black/40 backdrop-blur-md p-8 md:p-12 rounded-xl border border-white/20 shadow-2xl">
-                <span className="text-gold-accent font-bold tracking-widest uppercase text-sm mb-2 block shadow-black">Selected Region</span>
-                <h3 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-                    {selectedRegion.name}
-                </h3>
-                <p className="text-xl text-white leading-relaxed mb-8 drop-shadow-md">
-                    {selectedRegion.description}
-                </p>
-                
-                <div className="space-y-4 mb-10">
-                    <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-gold-accent/20 flex items-center justify-center text-gold-accent shadow-sm">
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-                        </div>
-                        <div>
-                            <span className="block text-xs text-gray-200 uppercase drop-shadow-sm">Primary Process</span>
-                            <span className="text-white font-medium drop-shadow-sm">
-                                {['yirgacheffe', 'sidama', 'limmu'].includes(selectedRegionId) ? 'Washed & Natural' : 'Natural / Dry Process'}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-gold-accent/20 flex items-center justify-center text-gold-accent shadow-sm">
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                        </div>
-                        <div>
-                            <span className="block text-xs text-gray-200 uppercase drop-shadow-sm">Elevation</span>
-                            <span className="text-white font-medium drop-shadow-sm">1,800 - 2,300 masl</span>
-                        </div>
-                    </div>
-                </div>
+      {/* Main Content Content */}
+      <div className="absolute inset-0 z-20 container mx-auto px-6 flex flex-col justify-center h-full pb-32 md:pb-0">
+        <div className="max-w-3xl">
+          {/* Animated Text Wrapper */}
+          <div key={activeRegion.id} className="animate-fadeIn">
+            
+            <div className="flex items-center gap-4 mb-6 overflow-hidden">
+                <span className="text-gold-accent font-bold tracking-[0.3em] uppercase text-sm animate-slideRight">
+                  Ethiopian Origins
+                </span>
+                <div className="h-px bg-gold-accent w-24 animate-growWidth origin-left"></div>
+            </div>
 
+            <h2 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 leading-none drop-shadow-2xl animate-slideUp" style={{ animationDelay: '100ms' }}>
+              {t(`coffee.${activeRegion.id}.name`)}
+            </h2>
+
+            <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8 max-w-xl drop-shadow-lg animate-slideUp" style={{ animationDelay: '200ms' }}>
+              {t(`coffee.${activeRegion.id}.description`)}
+            </p>
+
+            <div className="flex flex-wrap gap-4 animate-slideUp" style={{ animationDelay: '300ms' }}>
                 <a 
-                    href={`#/coffee/${selectedRegionId}`} 
-                    className="inline-block bg-white text-gray-900 hover:bg-gold-accent font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg"
+                    href={`#/coffee/${activeRegion.id}`} 
+                    className="group flex items-center gap-3 bg-transparent border border-white/30 hover:border-gold-accent hover:bg-gold-accent text-white hover:text-[#2C1810] px-8 py-3 rounded-full transition-all duration-300 backdrop-blur-sm"
                 >
-                    View Coffees
+                    <span className="font-bold tracking-wider text-sm uppercase">Explore Region</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                 </a>
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Navigation "Film Strip" */}
+      <div className="absolute bottom-0 left-0 w-full z-30 bg-gradient-to-t from-black via-black/80 to-transparent pt-20 pb-8">
+        <div className="container mx-auto px-6">
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x">
+                {regionsData.map((region, index) => {
+                    // Find matching product data for thumbnail
+                    const product = coffeeProducts.find(p => p.id === region.id);
+                    const imageSrc = product ? product.image : region.image;
+
+                    return (
+                        <button
+                            key={region.id}
+                            onClick={() => handleManualSelect(index)}
+                            className={`relative flex-shrink-0 w-40 h-28 md:w-56 md:h-36 rounded-xl overflow-hidden transition-all duration-500 snap-center group/card border-2 ${
+                                index === activeIndex 
+                                ? 'border-gold-accent scale-105 shadow-[0_0_20px_rgba(200,164,110,0.3)]' 
+                                : 'border-white/10 opacity-60 hover:opacity-100 hover:scale-105'
+                            }`}
+                        >
+                            <img 
+                                src={imageSrc} 
+                                alt={region.name} 
+                                className="w-full h-full object-cover"
+                            />
+                            <div className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${index === activeIndex ? 'bg-black/20' : ''}`}></div>
+                            
+                            <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/90 to-transparent">
+                                <span className={`block font-display font-bold text-lg text-white ${index === activeIndex ? 'text-gold-accent' : ''}`}>
+                                    {t(`coffee.${region.id}.name`)}
+                                </span>
+                            </div>
+
+                            {/* Progress Bar for Active Item */}
+                            {index === activeIndex && isAutoPlaying && (
+                                <div className="absolute bottom-0 left-0 h-1 bg-gold-accent animate-progressBar w-full origin-left"></div>
+                            )}
+                        </button>
+                    );
+                })}
+            </div>
+        </div>
+      </div>
+
+      {/* CSS Animations (Injected here for scoped usage) */}
+      <style>{`
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes growWidth {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes progressBar {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        .animate-slideUp { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .animate-slideRight { animation: slideRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .animate-growWidth { animation: growWidth 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-progressBar { animation: progressBar 6s linear forwards; }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      `}</style>
+
     </section>
   );
 }
