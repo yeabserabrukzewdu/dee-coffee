@@ -79,7 +79,7 @@ export function Header() {
         {/* Logo */}
         <a href="#/" onClick={closeMenu} className="flex items-center gap-3 group z-20">
             <img 
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-Photoroom-png-Photoroom-d6v4.png" 
+              src="/logos.png"
               alt="DEE COFFEE" 
               className="h-12 md:h-14 w-auto object-contain transform transition-transform duration-300 group-hover:scale-105" 
             />
