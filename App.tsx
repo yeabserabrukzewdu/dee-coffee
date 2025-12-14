@@ -14,6 +14,7 @@ import { Services } from './components/Services';
 import { ContactToggle } from './components/ContactToggle';
 import { CoffeeDetail } from './components/CoffeeDetail';
 import { HomeAbout } from './components/HomeAbout';
+import { OriginsMap } from './components/OriginsMap';
 
 function App() {
   const [route, setRoute] = useState(window.location.hash || '#/');
@@ -52,9 +53,9 @@ function App() {
       <>
         <Hero />
         <HomeAbout />
+        <OriginsMap />
         <Featured />
         <Services />
-        <OurCoffee embedded={true} />
         <Process />
       </>
     );
