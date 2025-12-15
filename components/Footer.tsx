@@ -10,37 +10,54 @@ export function Footer() {
       <div className="container mx-auto px-6 py-12">
         <Reveal>
           <div className="grid md:grid-cols-4 gap-8">
+            {/* Logo & Tagline */}
             <div>
-              <h3 className="font-display text-xl font-bold text-[#2C1810] dark:text-white mb-4">DEE COFFEE</h3>
-              <p className="text-sm">{t('footer.tagline')}</p>
+              <a href="#/" className="inline-block mb-4">
+                  <img 
+                     src="/logos.png"
+                    alt="DEE COFFEE" 
+                    className="h-20 w-auto object-contain filter drop-shadow-sm" 
+                  />
+              </a>
+              <h3 className="font-display text-xl font-bold text-[#2C1810] dark:text-white mb-2">DEE COFFEE</h3>
+              <p className="text-sm leading-relaxed max-w-xs">{t('footer.tagline')}</p>
             </div>
+
+            {/* Shop Links */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.shop.title')}</h4>
-              <ul>
-                <li className="mb-2"><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.all')}</a></li>
-                <li className="mb-2"><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.subscriptions')}</a></li>
-                <li className="mb-2"><a href="#/order" className="hover:text-gold-accent dark:hover:text-white">{t('footer.shop.gear')}</a></li>
+              <ul className="space-y-2">
+                <li><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.all')}</a></li>
+                <li><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.subscriptions')}</a></li>
+                <li><a href="#/order" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.gear')}</a></li>
               </ul>
             </div>
+
+            {/* Company Links */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.about.title')}</h4>
-              <ul>
-                <li className="mb-2"><a href="#/story" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.story')}</a></li>
-                <li className="mb-2"><a href="#/order" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.contact')}</a></li>
-                <li className="mb-2"><a href="#/gallery" className="hover:text-gold-accent dark:hover:text-white">{t('footer.about.faqs')}</a></li>
+              <ul className="space-y-2">
+                <li><a href="#/story" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.story')}</a></li>
+                <li><a href="#/order" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.contact')}</a></li>
+                <li><a href="#/gallery" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.faqs')}</a></li>
               </ul>
             </div>
+
+            {/* Connect Section */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.follow')}</h4>
-              <div className="flex space-x-4">
-                <a href="#" aria-label="Facebook">
-                  <svg className="w-6 h-6 hover:text-gold-accent dark:hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z" /></svg>
+              <div className="flex items-center gap-4">
+                <a href="#" aria-label="Facebook" className="hover:text-gold-accent dark:hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
-                <a href="#" aria-label="Instagram">
-                  <svg className="w-6 h-6 hover:text-gold-accent dark:hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664 4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z" /></svg>
+                <a href="#" aria-label="Twitter" className="hover:text-gold-accent dark:hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                 </a>
-                <a href="#" aria-label="Twitter">
-                  <svg className="w-6 h-6 hover:text-gold-accent dark:hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.296 1.634 4.208 3.803 4.649-.625.17-1.284.26-1.96.26-.306 0-.6-.03-1.003-.095.69 1.954 2.693 3.374 5.068 3.415-1.815 1.422-4.12 2.13-6.62 2.13-.431 0-.858-.025-1.274-.075 2.346 1.503 5.143 2.373 8.14 2.373 9.773 0 15.12-8.125 14.807-15.473.994-.718 1.858-1.617 2.548-2.643z" /></svg>
+                <a href="#" aria-label="Instagram" className="hover:text-gold-accent dark:hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" className="hover:text-gold-accent dark:hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
               </div>
             </div>
