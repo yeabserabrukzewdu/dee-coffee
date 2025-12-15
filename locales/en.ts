@@ -12,46 +12,46 @@ export const translations = {
   },
   hero: {
     slide1: {
-      headline: 'Premium Green Coffee Exporters',
-      subheadline: 'Connecting the world to the finest Ethiopian origins. We specialize in high-quality washed and natural beans.',
+      headline: 'Leading Coffee Export Company in Ethiopia',
+      subheadline: 'Connecting international buyers to the finest Ethiopian origins. We are your reliable partner for premium green coffee beans.',
     },
     slide2: {
-      headline: 'Sustainable Supply Chain',
-      subheadline: 'From smallholder farmers in Yirgacheffe and Guji directly to your roastery or warehouse.',
+      headline: 'Bulk Green Coffee Suppliers',
+      subheadline: 'Sourcing directly from smallholder farmers in Yirgacheffe and Guji to your warehouse anywhere in the world.',
     },
     slide3: {
-      headline: 'Certified Quality Control',
-      subheadline: 'Meticulous grading and cupping to ensure every container meets international standards.',
+      headline: 'Certified Ethiopian Exporters',
+      subheadline: 'Our laboratory ensures meticulous grading and cupping, guaranteeing top-quality exports that meet global standards.',
     },
-    shopButton: 'Get a Quote',
+    shopButton: 'Get an Export Quote',
   },
   featured: {
-    title: 'Certified & Member Of',
+    title: 'Recognized Coffee Exporters & Members',
   },
   services: {
-    headline: 'Global Logistics & Processing',
+    headline: 'Coffee Export Services & Logistics',
     quality: {
-      title: 'Grading & Quality Control',
-      desc: 'Our modern laboratory in Addis Ababa ensures every lot is cupped, graded, and inspected before shipment. We adhere to Q-Grade standards.',
+      title: 'Q-Grading & Inspection',
+      desc: 'Our modern laboratory in Addis Ababa ensures every lot is cupped, graded, and inspected before export. We guarantee Q-Grade standards for all our green beans.',
     },
     logistics: {
-      title: 'Export Logistics',
-      desc: 'We handle all documentation, customs clearance, and freight forwarding to ensure your container arrives on time, anywhere in the world.',
+      title: 'International Shipping',
+      desc: 'We handle all export documentation, customs clearance, and freight forwarding to ensure your container arrives on time at any port globally.',
     }
   },
   supplyChain: {
-    headline: 'Sourced Direct from our Farms',
+    headline: 'Sourced Direct for Export',
     subheadline: 'Reliable Supply Chain',
     direct: {
-      title: 'Direct Trade',
+      title: 'Direct Trade Export',
       desc: 'We build lasting relationships with farmers, ensuring fair prices and sustainable livelihoods.'
     },
     quality: {
-      title: 'Consistent Quality',
+      title: 'Consistent Cup Quality',
       desc: 'From cherry selection to final grading, we maintain strict standards at every step.'
     },
     logistics: {
-      title: 'Efficient Logistics',
+      title: 'Efficient Export Logistics',
       desc: 'Our integrated logistics network ensures your coffee arrives on time and in perfect condition.'
     }
   },
@@ -59,13 +59,13 @@ export const translations = {
     pageTitle: 'Our Heritage',
     pageSubtitle: 'Rooted in the birthplace of coffee, dedicated to the future of farming.',
     headline: 'Ethiopian Coffee Excellence',
-    body: 'DEE COFFEE is a premier exporter of green coffee beans. Established with a vision to bridge the gap between Ethiopian farmers and global roasters, we operate with full transparency. Our network covers the most prestigious growing regions including Sidama, Yirgacheffe, and Harrar.',
+    body: 'DEE COFFEE is a premier exporter of green coffee beans based in Addis Ababa. Established with a vision to bridge the gap between Ethiopian farmers and global roasters, we operate with full transparency. Our network covers the most prestigious growing regions including Sidama, Yirgacheffe, and Harrar.',
     history: 'Our journey began over two decades ago in the highlands of Oromia. What started as a small family collection station has grown into a fully integrated export business. We understand that the quality of the cup depends entirely on the livelihood of the farmer. This philosophy drives our "Farmer First" approach.',
     mission: 'Our mission is simple: To deliver the authentic taste of Ethiopia while empowering the communities that cultivate it. We reinvest a percentage of our profits into local infrastructure projects, including schools and clean water initiatives in the growing regions.',
   },
   ourCoffee: {
-    headline: 'The Collection',
-    subheadline: 'Explore the distinct character of Ethiopia’s finest growing regions. From the floral Yirgacheffe to the wild forests of Bale.',
+    headline: 'Export Catalogue',
+    subheadline: 'Explore our range of export-quality green coffee beans from Ethiopia’s finest regions.',
     filters: {
       all: 'All Regions',
       washed: 'Washed',
@@ -73,8 +73,8 @@ export const translations = {
     }
   },
   process: {
-    headline: 'From Farm to Container',
-    subheadline: 'A meticulous journey ensuring quality preservation and complete traceability.',
+    headline: 'From Farm to Global Port',
+    subheadline: 'A meticulous export journey ensuring quality preservation and complete traceability.',
     sourcing: {
       title: 'Harvesting & Sourcing',
       description: 'Selective hand-picking of red cherries at optimal altitude.',
@@ -86,15 +86,15 @@ export const translations = {
       detail: 'At our washing stations, cherries are pulped and fermented with pristine mountain water (Washed) or dried whole on raised African beds (Natural). We constantly rotate the beans to ensure even drying and prevent defects.'
     },
     brewing: {
-      title: 'Milling & Export',
+      title: 'Milling & Loading',
       description: 'Sorting, bagging, and global logistics.',
       detail: 'Once dried to 11.5% moisture, the parchment is hulled, color-sorted, and hand-picked. We pack in GrainPro bags to lock in freshness before loading into containers for shipment to Djibouti port and beyond.'
     },
   },
   footer: {
-    tagline: 'Your trusted partner for Ethiopian Green Coffee.',
+    tagline: 'Your trusted partner for Ethiopian Green Coffee Export.',
     shop: {
-      title: 'Products',
+      title: 'Export Products',
       all: 'Washed Coffee',
       subscriptions: 'Natural Coffee',
       gear: 'Specialty Lots',
@@ -102,7 +102,7 @@ export const translations = {
     about: {
       title: 'Company',
       story: 'About Us',
-      contact: 'Contact',
+      contact: 'Contact Exporters',
       faqs: 'Certificates',
     },
     follow: 'Connect',
@@ -180,7 +180,7 @@ export const translations = {
     }
   },
   orderPage: {
-    headline: 'Request an Offer',
+    headline: 'Request Export Offer',
     subheadline: 'Please provide your requirements (Grade, Quantity, Port of Destination) and we will send a proforma invoice.',
     fullName: 'Contact Person',
     email: 'Business Email',
