@@ -77,6 +77,21 @@ export const translations = {
     body: 'DEE COFFEE is a premier exporter of green coffee beans based in Addis Ababa. Established with a vision to bridge the gap between Ethiopian farmers and global roasters, we operate with full transparency. Our network covers the most prestigious growing regions including Sidama, Yirgacheffe, and Harrar.',
     history: 'Our journey began over two decades ago in the highlands of Oromia. What started as a small family collection station has grown into a fully integrated export business. We understand that the quality of the cup depends entirely on the livelihood of the farmer. This philosophy drives our "Farmer First" approach.',
     mission: 'Our mission is simple: To deliver the authentic taste of Ethiopia while empowering the communities that cultivate it. We reinvest a percentage of our profits into local infrastructure projects, including schools and clean water initiatives in the growing regions.',
+    pillars: {
+        title: 'The Three Pillars of Our Operations',
+        directTrade: {
+            title: 'Direct Trade & Farmer Empowerment',
+            description: 'We believe that exceptional coffee starts with the farmer. Our "Farmer First" model eliminates unnecessary middlemen, ensuring that a higher percentage of the value remains with the 50+ household farms and 1,000+ smallholders we work with. We provide training on agronomy best practices, pre-finance harvests, and invest in community infrastructure like clean water and schools in the Gedeo and Guji zones.'
+        },
+        quality: {
+            title: 'Meticulous Processing & Grading',
+            description: 'Quality is not an accident; it is a discipline. Operating 20+ washing and drying stations allows us to control every variable of the processing method. From the moment the red cherry is picked to the final Q-grading in our Addis Ababa laboratory, our team monitors moisture content, defect count, and cup profile. We are certified Organic, Fair Trade, and RFA, guaranteeing that our operations meet the highest global standards.'
+        },
+        global: {
+            title: 'Global Logistics & Integrity',
+            description: 'Exporting over 2,000 tons annually requires precision. We have built a reputation for reliability, delivering to roasters in Europe, Asia, and the Americas. Our logistics team handles all documentation, customs, and shipping nuances, ensuring that your container arrives on schedule and the coffee tastes exactly as it did on the cupping table in Ethiopia.'
+        }
+    }
   },
   ourCoffee: {
     headline: 'Export Catalogue',
