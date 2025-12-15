@@ -196,5 +196,17 @@ export const translations = {
   galleryPage: {
     headline: 'Operations Gallery',
     subheadline: 'From the washing stations to the dry mill and port.',
+  },
+  contact: {
+    getInTouch: 'Get in Touch',
+    addressTitle: 'Headquarters',
+    address: 'Bole Sub City, Addis Ababa, Ethiopia',
+    phoneTitle: 'Phone',
+    emailTitle: 'Email',
+    hoursTitle: 'Business Hours',
+    weekdays: 'Mon - Fri: 8:30 AM - 5:30 PM',
+    saturday: 'Saturday: 8:30 AM - 12:30 PM',
+    sunday: 'Sunday: Closed',
+    mapTitle: 'Our Location',
   }
 };

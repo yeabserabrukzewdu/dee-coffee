@@ -172,5 +172,17 @@ export const translations = {
   galleryPage: {
     headline: 'የኦፕሬሽን ጋለሪ',
     subheadline: 'ከማጠቢያ ጣቢያዎች እስከ መጋዘን እና ወደብ።',
+  },
+  contact: {
+    getInTouch: 'ያግኙን',
+    addressTitle: 'ዋና መስሪያ ቤት',
+    address: 'ቦሌ ክፍለ ከተማ ፣ አዲስ አበባ ፣ ኢትዮጵያ',
+    phoneTitle: 'ስልክ',
+    emailTitle: 'ኢሜይል',
+    hoursTitle: 'የስራ ሰዓት',
+    weekdays: 'ሰኞ - አርብ: 2:30 - 11:30',
+    saturday: 'ቅዳሜ: 2:30 - 6:30',
+    sunday: 'እሁድ: ዝግ ነው',
+    mapTitle: 'መገኛ ቦታችን',
   }
 };
