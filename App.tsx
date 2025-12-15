@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -13,6 +14,7 @@ import { Services } from './components/Services';
 import { ContactToggle } from './components/ContactToggle';
 import { CoffeeDetail } from './components/CoffeeDetail';
 import { HomeAbout } from './components/HomeAbout';
+import { Numbers } from './components/Numbers';
 import { OriginsMap } from './components/OriginsMap';
 import { SEO } from './components/SEO';
 import { useTranslation } from './contexts/LanguageContext';
@@ -86,6 +88,7 @@ function App() {
       <>
         <Hero />
         <HomeAbout />
+        <Numbers />
         <OriginsMap />
         <Featured />
         <Services />
