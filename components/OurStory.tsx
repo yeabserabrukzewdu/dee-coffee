@@ -9,72 +9,112 @@ export function OurStory() {
     <section className="bg-[#FDFBF7] dark:bg-[#121212] min-h-screen">
       
       {/* Story Page Hero */}
-      <div className="relative h-[50vh] flex items-center justify-center">
+      <div className="relative h-[60vh] flex items-center justify-center">
          <div className="absolute inset-0 z-0">
              <img 
-               src="/COMAPNY.png" 
+              src="/Company.jpg"
                alt="Ethiopian Landscape" 
                className="w-full h-full object-cover"
              />
-             <div className="absolute inset-0 bg-transparent dark:bg-black/60 transition-colors duration-300"></div>
+             <div className="absolute inset-0 bg-black/40 dark:bg-black/60 transition-colors duration-300"></div>
          </div>
-         <div className="relative z-10 text-center px-6 drop-shadow-lg">
-             <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-4 fade-in-up">{t('ourStory.pageTitle')}</h1>
-             <p className="text-xl text-white font-medium max-w-2xl mx-auto fade-in-up" style={{ animationDelay: '100ms' }}>{t('ourStory.pageSubtitle')}</p>
+         <div className="relative z-10 text-center px-6 drop-shadow-lg max-w-4xl mx-auto">
+             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 fade-in-up">{t('ourStory.pageTitle')}</h1>
+             <p className="text-xl md:text-2xl text-white font-medium fade-in-up" style={{ animationDelay: '100ms' }}>{t('ourStory.pageSubtitle')}</p>
          </div>
       </div>
 
-      <div className="container mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          <Reveal className="w-full sticky top-32">
-            <img 
-              src="https://images.unsplash.com/photo-1507133314543-a813952185dd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-              alt="Ethiopian coffee farmer"
-              className="rounded-lg shadow-2xl w-full h-auto object-cover aspect-[4/5]"
-            />
-             <div className="mt-6 p-6 bg-white dark:bg-[#181818] rounded-lg shadow-lg border-l-4 border-gold-accent">
-                <p className="font-display text-xl font-bold text-gray-900 dark:text-white mb-2">"Coffee is our bread."</p>
-                <p className="text-gray-600 dark:text-gray-400 italic">- Local saying in Kaffa</p>
-             </div>
-          </Reveal>
+      <div className="container mx-auto px-6 py-24">
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
           
-          <div className="space-y-8">
-            <Reveal delay={200}>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-balance text-gray-900 dark:text-white mb-6">
-                {t('ourStory.headline')}
-              </h2>
-              <div className="prose dark:prose-invert prose-lg text-gray-600 dark:text-gray-300">
-                <p className="leading-relaxed mb-6">
-                  {t('ourStory.body')}
-                </p>
-                <p className="leading-relaxed mb-6">
-                  {t('ourStory.history')}
-                </p>
-                <p className="leading-relaxed">
-                  {t('ourStory.mission')}
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={400}>
-               <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-4">Why DEE COFFEE?</h3>
-               <ul className="space-y-4">
-                  {[
-                    { title: "Direct Trade", desc: "We skip the middlemen to ensure fair prices for farmers and better value for roasters." },
-                    { title: "Quality Guarantee", desc: "Every lot is Q-graded in our lab before export." },
-                    { title: "Sustainable", desc: "We support organic and shade-grown farming practices." }
-                  ].map((item, idx) => (
-                      <li key={idx} className="flex gap-4">
-                          <div className="mt-1 bg-gold-accent rounded-full w-6 h-6 flex-shrink-0 flex items-center justify-center text-gray-900 font-bold text-xs">✓</div>
-                          <div>
-                              <strong className="block text-gray-900 dark:text-white">{item.title}</strong>
-                              <span className="text-gray-600 dark:text-gray-400">{item.desc}</span>
-                          </div>
-                      </li>
-                  ))}
-               </ul>
+          {/* Sticky Sidebar Image - Fixed: Sticky is applied to the container, not the Reveal */}
+          <div className="lg:w-1/3 lg:sticky lg:top-32 h-auto self-start z-10">
+            <Reveal>
+               <div className="relative rounded-lg overflow-hidden shadow-2xl group">
+                  <img 
+                    src="OUR COFFEE.jpg"  
+                    alt="Ethiopian coffee farmer"
+                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+                      <div className="border-l-4 border-gold-accent pl-4">
+                          <p className="font-display text-2xl font-bold text-white mb-2 leading-tight">"Coffee is our bread."</p>
+                          <p className="text-gray-300 italic text-sm">- Local saying in Kaffa</p>
+                      </div>
+                  </div>
+               </div>
             </Reveal>
           </div>
+          
+          {/* Main Text Content */}
+          <div className="lg:w-2/3 space-y-12">
+             <Reveal delay={100}>
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2C1810] dark:text-white mb-8 leading-tight">
+                  {t('ourStory.headline')}
+                </h2>
+                <div className="prose dark:prose-invert prose-lg text-[#4A3728] dark:text-gray-300 max-w-none">
+                  <p className="leading-relaxed mb-6 text-lg">{t('ourStory.body')}</p>
+                  <p className="leading-relaxed mb-6 text-lg">{t('ourStory.history')}</p>
+                  <p className="leading-relaxed text-lg">{t('ourStory.mission')}</p>
+                </div>
+             </Reveal>
+
+             <div className="h-px bg-[#4A3728]/10 dark:bg-white/10 w-full my-8"></div>
+
+             <Reveal delay={200}>
+                <h3 className="font-display text-3xl font-bold text-[#2C1810] dark:text-white mb-8">
+                   {t('ourStory.pillars.title')}
+                </h3>
+                
+                <div className="space-y-10">
+                   {/* Direct Trade */}
+                   <div className="bg-white dark:bg-[#181818] p-8 rounded-xl shadow-lg border-l-4 border-gold-accent hover:shadow-xl transition-shadow duration-300">
+                      <div className="flex items-center gap-4 mb-4">
+                         <div className="p-2 bg-[#FDFBF7] dark:bg-[#222] rounded-full text-gold-accent">
+                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                         </div>
+                         <h4 className="font-display text-2xl font-bold text-[#2C1810] dark:text-white">
+                           {t('ourStory.pillars.directTrade.title')}
+                         </h4>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                         {t('ourStory.pillars.directTrade.description')}
+                      </p>
+                   </div>
+
+                   {/* Quality */}
+                   <div className="bg-white dark:bg-[#181818] p-8 rounded-xl shadow-lg border-l-4 border-gold-accent hover:shadow-xl transition-shadow duration-300">
+                      <div className="flex items-center gap-4 mb-4">
+                         <div className="p-2 bg-[#FDFBF7] dark:bg-[#222] rounded-full text-gold-accent">
+                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                         </div>
+                         <h4 className="font-display text-2xl font-bold text-[#2C1810] dark:text-white">
+                           {t('ourStory.pillars.quality.title')}
+                         </h4>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                         {t('ourStory.pillars.quality.description')}
+                      </p>
+                   </div>
+
+                   {/* Global */}
+                   <div className="bg-white dark:bg-[#181818] p-8 rounded-xl shadow-lg border-l-4 border-gold-accent hover:shadow-xl transition-shadow duration-300">
+                      <div className="flex items-center gap-4 mb-4">
+                         <div className="p-2 bg-[#FDFBF7] dark:bg-[#222] rounded-full text-gold-accent">
+                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                         </div>
+                         <h4 className="font-display text-2xl font-bold text-[#2C1810] dark:text-white">
+                           {t('ourStory.pillars.global.title')}
+                         </h4>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                         {t('ourStory.pillars.global.description')}
+                      </p>
+                   </div>
+                </div>
+             </Reveal>
+          </div>
+
         </div>
       </div>
     </section>

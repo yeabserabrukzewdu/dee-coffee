@@ -33,7 +33,7 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
            {/* Background Image */}
            <div className="absolute inset-0 z-0">
              <img 
-               src="OUR COFFEE.jpg" 
+               src="our coffee.webp" 
                alt="Green Coffee Beans" 
                className="w-full h-full object-cover"
              />
