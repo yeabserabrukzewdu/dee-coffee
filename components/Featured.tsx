@@ -16,13 +16,13 @@ const certifications = [
   { id: 'eu', label: 'EU Organic', image: '1.png' },
 ];
 
-const LogoItem = ({ item }: { item: typeof certifications[0] }) => (
-  <div className="flex flex-col items-center justify-center mx-8 md:mx-12  hover:opacity-100 transition-all duration-300 cursor-default group/item">
+const LogoItem: React.FC<{ item: typeof certifications[0] }> = ({ item }) => (
+  <div className="flex flex-col items-center justify-center mx-8 md:mx-12 opacity-50 hover:opacity-100 transition-all duration-300 cursor-default group/item">
      <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mb-4 relative">
         <img 
             src={item.image} 
             alt={item.label} 
-            className="w-full h-full object-contain group-hover/item:grayscale-0 transition-all duration-300 dark:group-hover/item:invert-0" 
+            className="w-full h-full object-contain grayscale group-hover/item:grayscale-0 transition-all duration-300 dark:invert dark:group-hover/item:invert-0" 
         />
      </div>
      <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-center whitespace-nowrap text-gray-500 dark:text-gray-400">{item.label}</span>
