@@ -25,6 +25,21 @@ export const translations = {
     },
     shopButton: 'ዋጋ ይጠይቁ',
   },
+  numbers: {
+    title: 'ዲ ኮፊ በቁጥር',
+    farms: {
+      title: '50+ የቤተሰብ እርሻዎች',
+      subtitle: '1000+ አርሶ አደሮች በአቅርቦት ሰንሰለት ውስጥ'
+    },
+    stations: {
+      title: '20+ የማጠቢያ ጣቢያዎች',
+      subtitle: '300+ ቋሚ እና 2000+ ጊዜያዊ ሰራተኞች'
+    },
+    export: {
+      title: '2000+ ቶን ተሽጧል',
+      subtitle: 'አፍሪካ፣ እስያ፣ አሜሪካ እና አውሮፓ ደርሷል'
+    }
+  },
   featured: {
     title: 'የምስክር ወረቀቶች እና አጋሮች',
   },

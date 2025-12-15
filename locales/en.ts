@@ -25,6 +25,21 @@ export const translations = {
     },
     shopButton: 'Get an Export Quote',
   },
+  numbers: {
+    title: 'DEE COFFEE IN NUMBERS',
+    farms: {
+      title: '50+ Household Farms',
+      subtitle: '1000+ Farmers in our supply chain'
+    },
+    stations: {
+      title: '20+ Washing/ Drying Stations',
+      subtitle: '300+ Full Time & 2000+ Temporary Workers Employed'
+    },
+    export: {
+      title: '2000+ Tons Sold',
+      subtitle: 'Africa, Asia, America and Europe Reached'
+    }
+  },
   featured: {
     title: 'Recognized Coffee Exporters & Members',
   },
