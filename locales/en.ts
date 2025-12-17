@@ -151,6 +151,11 @@ export const translations = {
             desc: 'As leaders in coffee procurement and as the biggest coffee exporters in Ethiopia, we go the extra mile to find the best coffee beans. To support growers, we\'ve introduced innovative price fixation schemes, encouraging them to benefit from market fluctuations.'
         }
       }
+    },
+    social: {
+      title: 'Commitment to Social Responsibility',
+      description: 'At DEE COFFEE, social responsibility ensures the coffee you receive is exceptional. We partner closely with Ethiopian farmers, empowering them with advanced agronomy training and sustainable farming practices. Leveraging modern technology, we optimize processing to guarantee premium quality beans. Our mission extends beyond export; we strive to improve livelihoods from farm to cup. As a leading Ethiopian exporter, we are dedicated to positive social impact, community support, and fair trade practices. We believe in doing good for the entire coffee ecosystem.',
+      callAction: 'Call Now'
     }
   },
   faq: {
