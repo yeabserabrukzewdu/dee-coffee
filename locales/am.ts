@@ -120,6 +120,36 @@ export const translations = {
       description: 'መለያ፣ ማሸግ እና ዓለም አቀፍ ሎጂስቲክስ።',
       detail: 'ወደ 11.5% እርጥበት ከደረቀ በኋላ ቡናው ይላጣል፣ በቀለም ይለያል እና በእጅ ይለቀማል። ወደ ጅቡቲ ወደብ ለመላክ ኮንቴይነሮች ውስጥ ከመጫናችን በፊት ትኩስነቱን ለመጠበቅ በግሬን ፕሮ ከረጢቶች ውስጥ እናሽጋለን።'
     },
+    features: {
+      title: 'Reliable Green Coffee Exporters in Ethiopia',
+      description: 'Get trustworthy green coffee from Ethiopia with us! We’ve been doing this for a long time, over 13+ years, ensuring top-notch quality, friendly customer support, careful packing and shipping, advanced processing, and getting the best coffee beans for you. And yeah, about the taste? Once tasted, there’s no going back!',
+      list: {
+        quality: {
+            title: 'Quality Assurance',
+            desc: 'At DEE COFFEE, we keep a close eye on the quality of our coffee from the moment we pick the beans to when it\'s shipped to you. Our quality lab follows the high global standards of DEE COFFEE, ensuring that every sip of our coffee gives you the hallmark DEE COFFEE experience.'
+        },
+        expertise: {
+            title: 'Years of Expertise',
+            desc: 'With 13+ years of experience, we\'ve become experts at getting the best coffee. And yes, our ISO certification is the proof! Our time in the coffee industry has taught us the ins and outs of selecting, processing, and delivering top-notch coffee beans.'
+        },
+        support: {
+            title: 'Customer Support',
+            desc: 'If there\'s anything on your mind or if you\'re unsure about something, don\'t worry! Our team at DEE COFFEE is here and ready to help. Whether you have questions about our coffee, need assistance with an order, or just want to chat about your coffee preferences, feel free to reach out.'
+        },
+        packing: {
+            title: 'Packing and Shipping',
+            desc: 'At DEE COFFEE, we cater to your specific needs by providing custom packing options. Our focus is on safe shipments and timely deliveries. With the capability to pack more than 10 containers every day, we ensure that your coffee reaches you just the way you want it.'
+        },
+        processing: {
+            title: 'Processing',
+            desc: 'Our cutting-edge dry processing plant is equipped with advanced facilities for cleaning, drying, and sorting beans, even by color. The state-of-the-art dry plant ensures that we never compromise on quality throughout the entire process.'
+        },
+        procurement: {
+            title: 'Leading Coffee Procurement',
+            desc: 'As leaders in coffee procurement and as the biggest coffee exporters in Ethiopia, we go the extra mile to find the best coffee beans. To support growers, we\'ve introduced innovative price fixation schemes, encouraging them to benefit from market fluctuations.'
+        }
+      }
+    }
   },
   footer: {
     tagline: 'ለኢትዮጵያ አረንጓዴ ቡና ታማኝ አጋርዎ።',
