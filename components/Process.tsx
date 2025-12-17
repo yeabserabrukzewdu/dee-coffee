@@ -80,7 +80,7 @@ export function Process() {
   const { t } = useTranslation();
   
   return (
-    <section className="py-24 md:py-32 bg-[#FDFBF7] dark:bg-[#121212] relative overflow-hidden">
+    <section className="pt-24 md:pt-32 bg-[#FDFBF7] dark:bg-[#121212] relative overflow-hidden">
       {/* Decorative connecting line */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#4A3728]/10 dark:bg-gray-800 hidden md:block -z-0"></div>
 
@@ -124,7 +124,7 @@ export function Process() {
           />
         </div>
 
-        {/* New 6 Key Details Section */}
+        {/* 6 Key Details Section */}
         <div className="mt-32 max-w-7xl mx-auto">
              <Reveal className="text-center mb-16">
                  <h2 className="font-display text-3xl md:text-5xl font-bold text-[#2C1810] dark:text-white mb-6">
@@ -156,13 +156,33 @@ export function Process() {
                  ))}
              </div>
         </div>
+      </div>
 
-        <Reveal className="text-center mt-20" direction="up">
-            <a href="#/order" className="inline-block bg-gold-accent text-[#2C1810] font-bold py-4 px-10 rounded-full text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                {t('process.startOrder')}
-            </a>
-        </Reveal>
+      {/* Full Width Sticky/Parallax Social Responsibility Section */}
+      <div 
+         className="relative mt-32 min-h-[70vh] flex items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat" 
+         style={{ backgroundImage: "url('/sticky.jpg')"}}
+      >
+         
+          
+           <div className="relative z-10 container mx-auto px-6 text-center text-white py-20">
+             <Reveal direction="up">
+                 <div className="max-w-4xl mx-auto">
+                     <h2 className="font-display text-4xl md:text-6xl font-bold mb-8 text-balance" style={{ textShadow: '0 4px 8px rgba(0,0,0,0.8)' }}>
+                        {t('process.social.title')}
+                     </h2>
+                     <p className="text-xl md:text-2xl font-normal leading-relaxed mb-12 text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>
+                        {t('process.social.description')}
+                     </p>
+                     <a href="tel:+251911223344" className="inline-block bg-gold-accent text-[#2C1810] font-bold py-4 px-12 rounded-full text-xl hover:bg-white hover:text-gold-accent transition-all duration-300 shadow-2xl transform hover:scale-105 border-2 border-transparent">
+                        {t('process.social.callAction')}
+                     </a>
+                 </div>
+             </Reveal>
+          </div>
       </div>
     </section>
   );
 }
+
+   
