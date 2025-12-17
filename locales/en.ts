@@ -103,6 +103,8 @@ export const translations = {
     }
   },
   process: {
+    howWeWork: 'How We Work',
+    startOrder: 'Start Your Order',
     headline: 'From Farm to Global Port',
     subheadline: 'A meticulous export journey ensuring quality preservation and complete traceability.',
     sourcing: {
@@ -151,6 +153,44 @@ export const translations = {
       }
     }
   },
+  faq: {
+    headline: 'Frequently Asked Questions',
+    subheadline: 'Everything you need to know about exporting coffee with us.',
+    questions: {
+      moq: {
+        q: 'What is the minimum order quantity (MOQ)?',
+        a: 'Our standard minimum order quantity for export is one 20ft container (approx. 19.2 metric tons). However, for high-value specialty microlots, we can discuss smaller air-freight shipments.'
+      },
+      samples: {
+        q: 'Do you provide samples before shipment?',
+        a: 'Yes! We strongly encourage cupping before buying. We provide 300g - 500g green coffee samples sent via DHL/FedEx for your quality approval.'
+      },
+      payment: {
+        q: 'What are your payment terms?',
+        a: 'We generally accept Irrevocable Letter of Credit (L/C) at sight, Cash Against Documents (CAD), or TT (Telegraphic Transfer) depending on the buyer\'s history and volume.'
+      },
+      shipping: {
+        q: 'How long does the shipping process take?',
+        a: 'Once the contract is signed and LC opened, processing and trucking to the Port of Djibouti typically takes 20-30 days. Ocean freight time depends on your destination port.'
+      },
+      certification: {
+        q: 'Are your coffees certified?',
+        a: 'Yes, we hold major certifications including Organic (EU/NOP), Fair Trade, and Rainforest Alliance. Please specify your certification requirements when requesting a quote.'
+      },
+      visit: {
+        q: 'Can I visit your washing stations?',
+        a: 'Absolutely. We believe in transparency. We welcome buyers to visit our facilities in Yirgacheffe and Guji during the harvest season (Nov - Jan) to see our operations firsthand.'
+      },
+      roasted: {
+        q: 'Do you sell roasted coffee?',
+        a: 'Our primary focus is export-grade Green Coffee Beans. We do not export roasted coffee in bulk, as we supply roasters who prefer to roast the beans themselves to maintain freshness.'
+      },
+      carriers: {
+        q: 'Which shipping lines do you use?',
+        a: 'We work with major reliable carriers like Maersk, MSC, and CMA CGM to ensure your coffee arrives safely and on schedule.'
+      }
+    }
+  },
   footer: {
     tagline: 'Your trusted partner for Ethiopian Green Coffee Export.',
     shop: {
@@ -163,7 +203,7 @@ export const translations = {
       title: 'Company',
       story: 'About Us',
       contact: 'Contact Exporters',
-      faqs: 'Certificates',
+      faqs: 'FAQ',
     },
     follow: 'Connect',
     copyright: `© ${new Date().getFullYear()} DEE COFFEE Exporters. All Rights Reserved.`,

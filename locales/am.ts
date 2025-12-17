@@ -103,6 +103,8 @@ export const translations = {
     }
   },
   process: {
+    howWeWork: 'እንዴት እንደምንሰራ',
+    startOrder: 'ትዕዛዝ ይጀምሩ',
     headline: 'ከእርሻ ወደ ኮንቴይነር',
     subheadline: 'የጥራት አጠባበቅ እና ሙሉ ክትትልን የሚያረጋግጥ ጥንቃቄ የተሞላበት ጉዞ።',
     sourcing: {
@@ -121,33 +123,71 @@ export const translations = {
       detail: 'ወደ 11.5% እርጥበት ከደረቀ በኋላ ቡናው ይላጣል፣ በቀለም ይለያል እና በእጅ ይለቀማል። ወደ ጅቡቲ ወደብ ለመላክ ኮንቴይነሮች ውስጥ ከመጫናችን በፊት ትኩስነቱን ለመጠበቅ በግሬን ፕሮ ከረጢቶች ውስጥ እናሽጋለን።'
     },
     features: {
-      title: 'Reliable Green Coffee Exporters in Ethiopia',
-      description: 'Get trustworthy green coffee from Ethiopia with us! We’ve been doing this for a long time, over 13+ years, ensuring top-notch quality, friendly customer support, careful packing and shipping, advanced processing, and getting the best coffee beans for you. And yeah, about the taste? Once tasted, there’s no going back!',
+      title: 'በኢትዮጵያ አስተማማኝ የአረንጓዴ ቡና ላኪዎች',
+      description: 'ከእኛ ጋር አስተማማኝ አረንጓዴ ቡና ከኢትዮጵያ ያግኙ! ከ13 ዓመታት በላይ ልምድ፣ ከፍተኛ ጥራት፣ ወዳጃዊ የደንበኞች አገልግሎት፣ ጥንቃቄ የተሞላበት ማሸግ እና መላክ፣ እና ምርጥ የቡና ፍሬዎችን ለእርስዎ በማቅረብ ላይ እንገኛለን።',
       list: {
         quality: {
-            title: 'Quality Assurance',
-            desc: 'At DEE COFFEE, we keep a close eye on the quality of our coffee from the moment we pick the beans to when it\'s shipped to you. Our quality lab follows the high global standards of DEE COFFEE, ensuring that every sip of our coffee gives you the hallmark DEE COFFEE experience.'
+            title: 'የጥራት ማረጋገጫ',
+            desc: 'በዲ ኮፊ፣ ቡናችንን ከለቀምንበት ጊዜ ጀምሮ እስኪላክ ድረስ የጥራት ደረጃውን በጥብቅ እንከታተላለን። የእኛ የጥራት ላብራቶሪ ዓለም አቀፍ ደረጃዎችን በመከተል ምርጡን ተሞክሮ ያረጋግጣል።'
         },
         expertise: {
-            title: 'Years of Expertise',
-            desc: 'With 13+ years of experience, we\'ve become experts at getting the best coffee. And yes, our ISO certification is the proof! Our time in the coffee industry has taught us the ins and outs of selecting, processing, and delivering top-notch coffee beans.'
+            title: 'የዓመታት ልምድ',
+            desc: 'በ13+ ዓመታት ልምድ፣ ምርጥ ቡና በማቅረብ ረገድ ባለሙያዎች ሆነናል። የ ISO የምስክር ወረቀታችንም ለዚህ ማረጋገጫ ነው። ምርጥ ቡናን በመምረጥ እና በማቀነባበር ረገድ ጥልቅ እውቀት አለን።'
         },
         support: {
-            title: 'Customer Support',
-            desc: 'If there\'s anything on your mind or if you\'re unsure about something, don\'t worry! Our team at DEE COFFEE is here and ready to help. Whether you have questions about our coffee, need assistance with an order, or just want to chat about your coffee preferences, feel free to reach out.'
+            title: 'የደንበኛ ድጋፍ',
+            desc: 'ማንኛውም ጥያቄ ካለዎት ወይም እርዳታ ከፈለጉ፣ ቡድናችን ለመርዳት ዝግጁ ነው። ስለ ቡናችን፣ ስለ ትዕዛዝዎ ወይም ስለ ምርጫዎችዎ ለመወያየት በማንኛውም ጊዜ ያግኙን።'
         },
         packing: {
-            title: 'Packing and Shipping',
-            desc: 'At DEE COFFEE, we cater to your specific needs by providing custom packing options. Our focus is on safe shipments and timely deliveries. With the capability to pack more than 10 containers every day, we ensure that your coffee reaches you just the way you want it.'
+            title: 'ማሸግ እና መላክ',
+            desc: 'ለእርስዎ ፍላጎት የሚስማማ የማሸጊያ አማራጮችን እናቀርባለን። በቀን ከ10 በላይ ኮንቴይነሮችን የማሸግ አቅም አለን፣ ይህም ቡናዎ በሰዓቱ እና በደህና ሁኔታ መድረሱን ያረጋግጣል።'
         },
         processing: {
-            title: 'Processing',
-            desc: 'Our cutting-edge dry processing plant is equipped with advanced facilities for cleaning, drying, and sorting beans, even by color. The state-of-the-art dry plant ensures that we never compromise on quality throughout the entire process.'
+            title: 'ማቀነባበር',
+            desc: 'ዘመናዊ የማቀነባበሪያ ተክላችን ቡናውን ለማጽዳት፣ ለማድረቅ እና ለመለየት (በቀለም ጭምር) ይረዳል። ይህም በሂደቱ ውስጥ ጥራት እንዳይቀንስ ያረጋግጣል።'
         },
         procurement: {
-            title: 'Leading Coffee Procurement',
-            desc: 'As leaders in coffee procurement and as the biggest coffee exporters in Ethiopia, we go the extra mile to find the best coffee beans. To support growers, we\'ve introduced innovative price fixation schemes, encouraging them to benefit from market fluctuations.'
+            title: 'የቡና ግዥ',
+            desc: 'እንደ ቀዳሚ የቡና ላኪዎች፣ ምርጥ የቡና ፍሬዎችን ለማግኘት ብዙ እንጥራለን። አርሶ አደሮችን ለመደገፍ፣ ከገበያ መዋዠቅ ተጠቃሚ የሚያደርጋቸው የዋጋ አሰጣጥ ሥርዓቶችን ዘርግተናል።'
         }
+      }
+    }
+  },
+  faq: {
+    headline: 'ተደጋግመው የሚጠየቁ ጥያቄዎች',
+    subheadline: 'ከእኛ ጋር ቡና ስለመላክ ማወቅ ያለብዎት ነገር ሁሉ።',
+    questions: {
+      moq: {
+        q: 'አነስተኛ የትዕዛዝ መጠን (MOQ) ስንት ነው?',
+        a: 'ለመላክ የእኛ መደበኛ ዝቅተኛ የትዕዛዝ መጠን አንድ የ 20ft ኮንቴይነር (በግምት 19.2 ሜትሪክ ቶን) ነው። ነገር ግን፣ ለከፍተኛ ዋጋ ልዩ ማይክሮሎቶች፣ ስለ አየር ጭነት መወያየት እንችላለን።'
+      },
+      samples: {
+        q: 'ከመላኩ በፊት ናሙናዎችን ይሰጣሉ?',
+        a: 'አዎ! ከመግዛትዎ በፊት ናሙና እንዲቀምሱ እናበረታታለን። ለጥራት ማረጋገጫዎ በDHL/FedEx የሚላኩ ከ300ግ - 500ግ አረንጓዴ ቡና ናሙናዎችን እናቀርባለን።'
+      },
+      payment: {
+        q: 'የክፍያ ውሎችዎ ምንድ ናቸው?',
+        a: 'በአጠቃላይ የማይሻር የክሬዲት ደብዳቤ (L/C) በዕይታ፣ በጥሬ ገንዘብ ከሰነዶች (CAD) ወይም TT (Telegraphic Transfer) እንደ ገዢው ታሪክ እና መጠን እንቀበላለን።'
+      },
+      shipping: {
+        q: 'የመላኪያ ሂደቱ ምን ያህል ጊዜ ይወስዳል?',
+        a: 'ውሉ ከተፈረመ እና LC ከተከፈተ በኋላ ወደ ጅቡቲ ወደብ ማቀነባበር እና ማጓጓዝ በተለምዶ ከ20-30 ቀናት ይወስዳል። የውቅያኖስ ጭነት ጊዜ በመድረሻ ወደብዎ ይወሰናል.'
+      },
+      certification: {
+        q: 'ቡናዎ የተረጋገጠ ነው?',
+        a: 'አዎ፣ ኦርጋኒክ (EU/NOP)፣ ፍትሃዊ ንግድ (Fair Trade) እና የዝናብ ደን (Rainforest Alliance) ጨምሮ ዋና ዋና የምስክር ወረቀቶች አሉን። እባክዎ ዋጋ ሲጠይቁ የምስክር ወረቀት መስፈርቶችዎን ይግለጹ።'
+      },
+      visit: {
+        q: 'የማጠቢያ ጣቢያዎችዎን መጎብኘት እችላለሁ?',
+        a: 'በእርግጠኝነት። በግልፅነት እናምናለን። ገዢዎች በመከር ወቅት (ህዳር - ጥር) በይርጋጨፌ እና ጉጂ የሚገኙትን ተቋሞቻችንን እንዲጎበኙ እንጋብዛለን።'
+      },
+      roasted: {
+        q: 'የተጠበሰ ቡና ይሸጣሉ?',
+        a: 'ዋና ትኩረታችን የኤክስፖርት ደረጃ አረንጓዴ ቡና ነው። ትኩስነቱን ለመጠበቅ ባቄላውን እራሳቸው መጥበስ ለሚመርጡ ጠበሶች ስለምናቀርብ የተጠበሰ ቡና በብዛት አንልክም።'
+      },
+      carriers: {
+        q: 'የትኞቹን የመርከብ መስመሮች ይጠቀማሉ?',
+        a: 'ቡናዎ በሰላም እና በታቀደው መሰረት መድረሱን ለማረጋገጥ እንደ Maersk፣ MSC እና CMA CGM ካሉ ዋና ዋና አስተማማኝ አጓጓዦች ጋር እንሰራለን።'
       }
     }
   },
@@ -163,7 +203,7 @@ export const translations = {
       title: 'ኩባንያ',
       story: 'ስለ እኛ',
       contact: 'ያግኙን',
-      faqs: 'የምስክር ወረቀቶች',
+      faqs: 'ጥያቄዎች',
     },
     follow: 'ይገናኙ',
     copyright: `© ${new Date().getFullYear()} DEE COFFEE ቡና ላኪዎች። መብቱ በህግ የተጠበቀ ነው።`,
