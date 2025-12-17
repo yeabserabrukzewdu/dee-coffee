@@ -1,12 +1,20 @@
+
 import React, { useEffect, useRef, useState, PropsWithChildren } from 'react';
 
 interface RevealProps {
   className?: string;
   delay?: number; // Delay in milliseconds
   threshold?: number; // Intersection threshold (0.0 - 1.0)
+  direction?: 'up' | 'left' | 'right'; // Animation direction
 }
 
-export const Reveal: React.FC<PropsWithChildren<RevealProps>> = ({ children, className = '', delay = 0, threshold = 0.1 }) => {
+export const Reveal: React.FC<PropsWithChildren<RevealProps>> = ({ 
+  children, 
+  className = '', 
+  delay = 0, 
+  threshold = 0.1,
+  direction = 'up' 
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -33,10 +41,12 @@ export const Reveal: React.FC<PropsWithChildren<RevealProps>> = ({ children, cla
     };
   }, [threshold]);
 
+  const directionClass = `reveal-${direction}`;
+
   return (
     <div
       ref={ref}
-      className={`reveal ${isVisible ? 'active' : ''} ${className}`}
+      className={`reveal ${directionClass} ${isVisible ? 'active' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

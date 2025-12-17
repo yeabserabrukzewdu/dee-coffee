@@ -16,7 +16,8 @@ const ProcessStep = ({ number, title, description, detail, image, isReversed = f
   <div className={`flex flex-col md:flex-row items-center gap-12 md:gap-20 mb-24 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
     {/* Image Side */}
     <div className="w-full md:w-1/2">
-      <Reveal className="relative group">
+      {/* If reversed (image on right), slide from right. Else (image on left), slide from left. */}
+      <Reveal direction={isReversed ? 'right' : 'left'} className="relative group">
         <div className="absolute inset-0 bg-gold-accent transform translate-x-4 translate-y-4 rounded-2xl transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
         <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
            <img 
@@ -31,7 +32,8 @@ const ProcessStep = ({ number, title, description, detail, image, isReversed = f
 
     {/* Text Side */}
     <div className="w-full md:w-1/2">
-      <Reveal delay={200}>
+      {/* If reversed (text on left), slide from left. Else (text on right), slide from right. */}
+      <Reveal direction={isReversed ? 'left' : 'right'} delay={200}>
         <div className="flex items-center gap-4 mb-6">
            <span className="font-display text-6xl md:text-8xl font-bold text-[#E6D5BC] dark:text-gray-800 select-none">
              {number}
@@ -85,7 +87,7 @@ export function Process() {
       <div className="container mx-auto px-6 relative z-10">
         <Reveal className="text-center mb-24">
           <span className="text-gold-accent font-bold tracking-widest uppercase text-sm mb-4 block">
-             How We Work
+             {t('process.howWeWork')}
           </span>
           <h2 className="font-display text-4xl md:text-6xl font-bold text-balance text-[#2C1810] dark:text-white transition-colors duration-300">
             {t('process.headline')}
@@ -135,7 +137,12 @@ export function Process() {
              
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                  {['quality', 'expertise', 'support', 'packing', 'processing', 'procurement'].map((key, index) => (
-                     <Reveal key={key} delay={index * 100} className="bg-white dark:bg-[#181818] p-8 rounded-2xl shadow-lg border-t-4 border-gold-accent hover:-translate-y-2 transition-transform duration-300">
+                     <Reveal 
+                        key={key} 
+                        delay={index * 100} 
+                        direction={index % 2 === 0 ? 'left' : 'right'} 
+                        className="bg-white dark:bg-[#181818] p-8 rounded-2xl shadow-lg border-t-4 border-gold-accent hover:-translate-y-2 transition-transform duration-300"
+                     >
                          <div className="w-14 h-14 bg-[#FDFBF7] dark:bg-[#222] rounded-full flex items-center justify-center mb-6 text-gold-accent shadow-sm">
                              <FeatureIcon name={key} />
                          </div>
@@ -150,9 +157,9 @@ export function Process() {
              </div>
         </div>
 
-        <Reveal className="text-center mt-20">
+        <Reveal className="text-center mt-20" direction="up">
             <a href="#/order" className="inline-block bg-gold-accent text-[#2C1810] font-bold py-4 px-10 rounded-full text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                Start Your Order
+                {t('process.startOrder')}
             </a>
         </Reveal>
       </div>

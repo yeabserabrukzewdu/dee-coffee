@@ -14,7 +14,7 @@ export function Footer() {
             <div>
               <a href="#/" className="inline-block mb-4">
                   <img 
-                     src="/logos.png"
+                    src="/logos.png" 
                     alt="DEE COFFEE" 
                     className="h-20 w-auto object-contain filter drop-shadow-sm" 
                   />
@@ -39,7 +39,7 @@ export function Footer() {
               <ul className="space-y-2">
                 <li><a href="#/story" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.story')}</a></li>
                 <li><a href="#/order" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.contact')}</a></li>
-                <li><a href="#/gallery" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.faqs')}</a></li>
+                <li><a href="#/#faq" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.about.faqs')}</a></li>
               </ul>
             </div>
 
