@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { coffeeProducts } from '../data/coffeeData';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,9 +28,10 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Updated: White text with shadow, hover gold
-  const navLinkClasses = `text-white hover:text-gold-accent transition-colors font-medium relative group drop-shadow-md`;
-  const underlineClasses = "absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-accent transition-all duration-300 group-hover:w-full shadow-sm";
+  // Updated: Remove height constraints, rely on flex centering.
+  // bottom-0 puts it right at the baseline, -bottom-1.5 adds a tiny gap which looks good but close.
+  const navLinkClasses = `text-white hover:text-gold-accent transition-colors font-medium relative group drop-shadow-md flex items-center`;
+  const underlineClasses = "absolute -bottom-1.5 left-0 w-0 h-0.5 bg-gold-accent transition-all duration-300 group-hover:w-full shadow-sm";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-[#1a1a1a]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
@@ -79,7 +81,7 @@ export function Header() {
         {/* Logo */}
         <a href="#/" onClick={closeMenu} className="flex items-center gap-3 group z-20">
             <img 
-              src="/logos.png"
+              src="/logos.png" 
               alt="DEE COFFEE" 
               className="h-12 md:h-14 w-auto object-contain transform transition-transform duration-300 group-hover:scale-105" 
             />
@@ -89,7 +91,7 @@ export function Header() {
         </a>
 
         {/* Desktop Navigation - Centered Absolutely - visible only on LG and up */}
-        <nav className="hidden lg:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-max">
+        <nav className="hidden lg:flex items-center space-x-8 absolute left-1/2 top-0 transform -translate-x-1/2 w-max h-full">
           <a href="#/" className={navLinkClasses}>
             {t('nav.home')}
             <span className={underlineClasses}></span>
@@ -98,10 +100,36 @@ export function Header() {
             {t('nav.story')}
              <span className={underlineClasses}></span>
           </a>
-          <a href="#/coffee" className={navLinkClasses}>
-            {t('nav.coffee')}
-             <span className={underlineClasses}></span>
-          </a>
+          
+          {/* Green Coffee Dropdown - Integrated & Animated */}
+          <div className="relative group/dropdown h-full flex items-center">
+              <a href="#/coffee" className={`gap-1 ${navLinkClasses}`}>
+                {t('nav.coffee')}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-70 transition-transform duration-300 group-hover/dropdown:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                {/* Underline for Coffee Link - Activates on link hover OR dropdown container hover */}
+                <span className={`${underlineClasses} group-hover/dropdown:w-full`}></span>
+              </a>
+
+              {/* Animated Dropdown Content */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-0 pointer-events-none group-hover/dropdown:pointer-events-auto">
+                   <div className="bg-[#1a1a1a]/95 backdrop-blur-md border border-white/10 rounded-b-lg shadow-2xl overflow-hidden max-h-0 opacity-0 group-hover/dropdown:max-h-96 group-hover/dropdown:opacity-100 transition-all duration-500 ease-in-out">
+                       <div className="py-2 flex flex-col">
+                           {coffeeProducts.map((product) => (
+                               <a 
+                                   key={product.id}
+                                   href={`#/coffee/${product.id}`}
+                                   className="px-4 py-2 text-sm text-gray-300 hover:text-gold-accent hover:bg-white/5 transition-colors text-center whitespace-nowrap"
+                               >
+                                   {t(`coffee.${product.id}.name`)}
+                               </a>
+                           ))}
+                       </div>
+                   </div>
+              </div>
+          </div>
+
           <a href="#/gallery" className={navLinkClasses}>
             {t('nav.gallery')}
              <span className={underlineClasses}></span>
@@ -161,7 +189,21 @@ export function Header() {
         <div className="flex flex-col px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
           <a href="#/" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 border-b border-gray-800">{t('nav.home')}</a>
           <a href="#/story" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 border-b border-gray-800">{t('nav.story')}</a>
-          <a href="#/coffee" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 border-b border-gray-800">{t('nav.coffee')}</a>
+          
+          {/* Mobile Green Coffee List */}
+          <div className="border-b border-gray-800 pb-2">
+            <a href="#/coffee" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 flex justify-between items-center">
+              {t('nav.coffee')}
+            </a>
+            <div className="pl-4 space-y-2 mt-2">
+               {coffeeProducts.map(product => (
+                  <a key={product.id} href={`#/coffee/${product.id}`} onClick={closeMenu} className="block text-sm text-gray-400 hover:text-gold-accent">
+                    {t(`coffee.${product.id}.name`)}
+                  </a>
+               ))}
+            </div>
+          </div>
+
           <a href="#/gallery" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 border-b border-gray-800">{t('nav.gallery')}</a>
           
           <div className="pt-2 pb-4">
