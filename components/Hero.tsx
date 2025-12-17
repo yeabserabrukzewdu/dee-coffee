@@ -31,8 +31,16 @@ export function Hero() {
 
   const currentSlideKey = slidesData[currentSlide].key;
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === slidesData.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slidesData.length - 1 : prev - 1));
+  };
+
   return (
-    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden group/hero">
       {slidesData.map((slide, index) => (
         <div
           key={index}
@@ -43,6 +51,27 @@ export function Hero() {
           <div className="w-full h-full bg-black/20 dark:bg-black/50 transition-colors duration-1000"></div>
         </div>
       ))}
+
+      {/* Navigation Arrows */}
+      <button 
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 z-30 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-[#2C1810] transition-all duration-300 backdrop-blur-sm opacity-0 group-hover/hero:opacity-100 translate-x-[-20px] group-hover/hero:translate-x-0"
+        aria-label="Previous Slide"
+      >
+         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transform -translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+         </svg>
+      </button>
+
+      <button 
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 z-30 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-[#2C1810] transition-all duration-300 backdrop-blur-sm opacity-0 group-hover/hero:opacity-100 translate-x-[20px] group-hover/hero:translate-x-0"
+        aria-label="Next Slide"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transform translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
 
       <div className="relative z-10 px-4 drop-shadow-xl">
         <div key={`${currentSlide}-${language}`} className="fade-in-up">
@@ -87,3 +116,4 @@ export function Hero() {
     </section>
   );
 }
+
