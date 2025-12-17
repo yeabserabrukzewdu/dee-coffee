@@ -42,14 +42,25 @@ body {
 /* Modern Scroll Reveal Animation */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Elegant easing */
   will-change: opacity, transform;
+  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.reveal-left {
+  transform: translateX(-60px);
+}
+
+.reveal-right {
+  transform: translateX(60px);
 }
 
 .reveal.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(0, 0);
 }
 
 /* Enhanced Hero Animation */

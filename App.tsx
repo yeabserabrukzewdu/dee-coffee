@@ -16,6 +16,7 @@ import { CoffeeDetail } from './components/CoffeeDetail';
 import { HomeAbout } from './components/HomeAbout';
 import { Numbers } from './components/Numbers';
 import { OriginsMap } from './components/OriginsMap';
+import { FAQ } from './components/FAQ';
 import { SEO } from './components/SEO';
 import { useTranslation } from './contexts/LanguageContext';
 
@@ -93,6 +94,7 @@ function App() {
         <Featured />
         <Services />
         <Process />
+        <FAQ />
       </>
     );
     seoData = { 
