@@ -28,8 +28,6 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Updated: Remove height constraints, rely on flex centering.
-  // bottom-0 puts it right at the baseline, -bottom-1.5 adds a tiny gap which looks good but close.
   const navLinkClasses = `text-white hover:text-gold-accent transition-colors font-medium relative group drop-shadow-md flex items-center`;
   const underlineClasses = "absolute -bottom-1.5 left-0 w-0 h-0.5 bg-gold-accent transition-all duration-300 group-hover:w-full shadow-sm";
 
@@ -57,17 +55,17 @@ export function Header() {
             <div className="hidden md:flex items-center gap-1 text-gray-400 text-xs uppercase tracking-wider mr-2">
               <span>Follow Us:</span>
             </div>
-            <div className="flex items-center gap-3">
-              <a href="#" aria-label="Facebook" className="hover:text-gold-accent transition-colors">
+            <div className="flex items-center gap-4">
+              <a href="#" aria-label="Facebook" className="text-[#1877F2] hover:opacity-80 transition-opacity">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
-              <a href="#" aria-label="Twitter" className="hover:text-gold-accent transition-colors">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+              <a href="#" aria-label="X (Twitter)" className="text-white hover:opacity-80 transition-opacity">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.486 3.24H4.298l13.309 17.41z"></path></svg>
               </a>
-              <a href="#" aria-label="Instagram" className="hover:text-gold-accent transition-colors">
+              <a href="#" aria-label="Instagram" className="text-[#E4405F] hover:opacity-80 transition-opacity">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-gold-accent transition-colors">
+              <a href="#" aria-label="LinkedIn" className="text-[#0077B5] hover:opacity-80 transition-opacity">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
             </div>
@@ -78,19 +76,17 @@ export function Header() {
 
       {/* Main Header Bar */}
       <div className="container mx-auto px-6 py-5 flex justify-between items-center relative z-50">
-        {/* Logo */}
         <a href="#/" onClick={closeMenu} className="flex items-center gap-3 group z-20">
             <img 
               src="/logos.png" 
               alt="DEE COFFEE" 
-              className="h-12 md:h-14 w-auto object-contain transform transition-transform duration-300 group-hover:scale-105" 
+              className="h-12 md:h-14 lg:h-20 w-auto object-contain transform transition-transform duration-300 group-hover:scale-105" 
             />
             <span className="font-display font-bold text-xl md:text-2xl tracking-wide text-white drop-shadow-md transition-colors duration-300">
               DEE COFFEE
             </span>
         </a>
 
-        {/* Desktop Navigation - Centered Absolutely - visible only on LG and up */}
         <nav className="hidden lg:flex items-center space-x-8 absolute left-1/2 top-0 transform -translate-x-1/2 w-max h-full">
           <a href="#/" className={navLinkClasses}>
             {t('nav.home')}
@@ -101,18 +97,15 @@ export function Header() {
              <span className={underlineClasses}></span>
           </a>
           
-          {/* Green Coffee Dropdown - Integrated & Animated */}
           <div className="relative group/dropdown h-full flex items-center">
               <a href="#/coffee" className={`gap-1 ${navLinkClasses}`}>
                 {t('nav.coffee')}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 opacity-70 transition-transform duration-300 group-hover/dropdown:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-                {/* Underline for Coffee Link - Activates on link hover OR dropdown container hover */}
                 <span className={`${underlineClasses} group-hover/dropdown:w-full`}></span>
               </a>
 
-              {/* Animated Dropdown Content */}
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-0 pointer-events-none group-hover/dropdown:pointer-events-auto">
                    <div className="bg-[#1a1a1a]/95 backdrop-blur-md border border-white/10 rounded-b-lg shadow-2xl overflow-hidden max-h-0 opacity-0 group-hover/dropdown:max-h-96 group-hover/dropdown:opacity-100 transition-all duration-500 ease-in-out">
                        <div className="py-2 flex flex-col">
@@ -136,7 +129,6 @@ export function Header() {
           </a>
         </nav>
 
-        {/* Desktop Right Side Actions - visible only on LG and up */}
         <div className="hidden lg:flex items-center space-x-4 z-20">
           <button 
             onClick={toggleLanguage}
@@ -150,7 +142,6 @@ export function Header() {
           </a>
         </div>
 
-        {/* Mobile/Tablet Actions (Language + Hamburger) - visible on screens smaller than LG */}
         <div className="flex lg:hidden items-center gap-4 z-20">
           <button 
             onClick={toggleLanguage}
@@ -178,7 +169,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Slide-out Menu - Dark background to support white text */}
       <div 
         className={`absolute top-full left-0 right-0 bg-[#1a1a1a] border-t border-gray-800 shadow-2xl transition-all duration-300 ease-in-out lg:hidden -z-10 overflow-hidden ${
           isMenuOpen 
@@ -190,7 +180,6 @@ export function Header() {
           <a href="#/" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 border-b border-gray-800">{t('nav.home')}</a>
           <a href="#/story" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 border-b border-gray-800">{t('nav.story')}</a>
           
-          {/* Mobile Green Coffee List */}
           <div className="border-b border-gray-800 pb-2">
             <a href="#/coffee" onClick={closeMenu} className="text-lg font-medium text-white hover:text-gold-accent transition-colors block py-2 flex justify-between items-center">
               {t('nav.coffee')}
@@ -212,10 +201,19 @@ export function Header() {
             </a>
           </div>
           
-          {/* Mobile Socials in Menu */}
-          <div className="flex justify-center gap-6 pt-4 border-t border-gray-800">
-             <a href="#" className="text-gray-400 hover:text-gold-accent"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-             <a href="#" className="text-gray-400 hover:text-gold-accent"><svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <div className="flex justify-center gap-8 pt-6 border-t border-gray-800">
+             <a href="#" className="text-[#1877F2] hover:opacity-80 transition-opacity">
+               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+             </a>
+             <a href="#" className="text-white hover:opacity-80 transition-opacity">
+               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.486 3.24H4.298l13.309 17.41z"></path></svg>
+             </a>
+             <a href="#" className="text-[#E4405F] hover:opacity-80 transition-opacity">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+             </a>
+             <a href="#" className="text-[#0077B5] hover:opacity-80 transition-opacity">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+             </a>
           </div>
         </div>
       </div>
