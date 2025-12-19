@@ -4,20 +4,21 @@ import type { CoffeeProduct } from '../types';
 // The base product data. Names and descriptions will come from translations.
 export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longDescription' | 'tastingNotes'>[] = [
   {
-    id: 'guji',
-    image: '/GUJI.jpg',
+    id: 'sheko',
+    image: 'GUJI.webp',
     price: 0,
-    region: 'Guji Zone',
-    altitude: '2,000 - 2,200 masl',
+    region: 'Sheko Zone',
+    altitude: '1,700 - 2,000 masl',
     process: 'Natural',
+    process: 'Roasted',
     grade: 'G1',
     score: '89+',
     harvestSeason: 'October - January',
-    varietals: 'Heirloom, Kurume'
+    varietals: 'Sheko Variety'
   },
   {
     id: 'yirgacheffe',
-    image: 'YIRGACHEFE.jpg',
+    image: 'YIRGACHEFE.webp',
     price: 0, 
     region: 'Gedeo Zone',
     altitude: '1,950 - 2,150 masl',
@@ -34,6 +35,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
     region: 'Sidama Region',
     altitude: '1,800 - 2,200 masl',
     process: 'Washed',
+    process: 'Roasted',
     grade: 'G2',
     score: '85+',
     harvestSeason: 'October - January',
@@ -41,7 +43,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'harrar',
-    image: 'HARRAR.jpg',
+    image: 'HARRAR.webp',
     price: 0,
     region: 'East Hararghe',
     altitude: '1,500 - 1,800 masl',
@@ -53,7 +55,7 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
   },
   {
     id: 'limmu',
-    image: 'LIMMU.jpg',
+    image: 'LIMMU.webp',
     price: 0,
     region: 'Jimma Zone',
     altitude: '1,400 - 2,000 masl',
@@ -64,15 +66,16 @@ export const coffeeProducts: Omit<CoffeeProduct, 'name' | 'description' | 'longD
     varietals: 'Heirloom'
   },
   {
-    id: 'bale',
-    image: 'BALE.jpg',
+    id: 'kaffa',
+    image: 'BALE.webp',
     price: 0,
-    region: 'Bale Zone',
-    altitude: '1,800 - 2,300 masl',
-    process: 'Natural', // Often known for wild forest coffee
-    grade: 'G3',
-    score: '86+',
+    region: 'Kaffa Zone',
+    altitude: '1,500 - 2,100 masl',
+    process: 'Natural',
+    process: 'Roasted',
+    grade: 'G1',
+    score: '90+',
     harvestSeason: 'November - February',
-    varietals: 'Wild Forest'
+    varietals: 'Ancient Heirloom'
   }
 ];
