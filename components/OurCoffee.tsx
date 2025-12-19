@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { coffeeProducts as baseCoffeeProducts } from '../data/coffeeData';
 import { CoffeeCard } from './CoffeeCard';
 import { useTranslation } from '../contexts/LanguageContext';
@@ -12,17 +12,28 @@ interface OurCoffeeProps {
 
 export function OurCoffee({ embedded = false }: OurCoffeeProps) {
   const { t } = useTranslation();
-  const [filter, setFilter] = useState<'All' | 'Washed' | 'Natural'>('All');
+  const [filter, setFilter] = useState<'All' | 'Washed' | 'Natural' | 'Roasted'>('All');
+
+  // Logic to handle filter based on URL parameters (e.g., #/coffee?type=roasted)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.hash.split('?')[1]);
+    const type = params.get('type');
+    if (type === 'roasted') setFilter('Roasted');
+    else if (type === 'washed') setFilter('Washed');
+    else if (type === 'natural') setFilter('Natural');
+  }, []);
 
   const coffeeProducts: CoffeeProduct[] = baseCoffeeProducts.map(product => ({
     ...product,
     name: t(`coffee.${product.id}.name`),
     description: t(`coffee.${product.id}.description`),
-  }));
+  })) as CoffeeProduct[];
 
   const filteredProducts = filter === 'All' 
     ? coffeeProducts 
     : coffeeProducts.filter(p => p.process === filter);
+
+  const filterTypes: ('All' | 'Washed' | 'Natural' | 'Roasted')[] = ['All', 'Washed', 'Natural', 'Roasted'];
 
   return (
     <section className={`${embedded ? 'py-20 md:py-32' : 'min-h-screen'} bg-[#FDFBF7] dark:bg-[#121212] transition-colors duration-300`}>
@@ -33,7 +44,7 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
            {/* Background Image */}
            <div className="absolute inset-0 z-0">
              <img 
-               src="our coffee.webp" 
+               src="our coffee.webp"
                alt="Green Coffee Beans" 
                className="w-full h-full object-cover"
              />
@@ -67,14 +78,14 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
             </Reveal>
         )}
         
-        {/* Filters */}
+        {/* Filters - Updated with Roasted beside Washed and Natural */}
         <Reveal delay={100} className="flex justify-center mb-16">
-            <div className="inline-flex bg-white dark:bg-[#222] p-2 rounded-full shadow-lg border border-[#4A3728]/10 dark:border-gray-800">
-                {['All', 'Washed', 'Natural'].map((type) => (
+            <div className="inline-flex bg-white dark:bg-[#222] p-2 rounded-full shadow-lg border border-[#4A3728]/10 dark:border-gray-800 flex-wrap justify-center">
+                {filterTypes.map((type) => (
                     <button
                         key={type}
-                        onClick={() => setFilter(type as any)}
-                        className={`px-8 py-3 rounded-full text-base font-bold transition-all duration-300 ${
+                        onClick={() => setFilter(type)}
+                        className={`px-6 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-bold transition-all duration-300 ${
                             filter === type 
                             ? 'bg-gold-accent text-[#2C1810] shadow-md transform scale-105' 
                             : 'text-[#4A3728] hover:text-[#2C1810] dark:text-gray-500 dark:hover:text-white'
@@ -82,7 +93,8 @@ export function OurCoffee({ embedded = false }: OurCoffeeProps) {
                     >
                         {type === 'All' ? t('ourCoffee.filters.all') : 
                          type === 'Washed' ? t('ourCoffee.filters.washed') : 
-                         t('ourCoffee.filters.natural')}
+                         type === 'Natural' ? t('ourCoffee.filters.natural') :
+                         t('ourCoffee.filters.roasted')}
                     </button>
                 ))}
             </div>

@@ -23,13 +23,14 @@ export function Footer() {
               <p className="text-sm leading-relaxed max-w-xs">{t('footer.tagline')}</p>
             </div>
 
-            {/* Shop Links */}
+            {/* Shop Links - Refined for clarity between Green and Roasted */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.shop.title')}</h4>
               <ul className="space-y-2">
                 <li><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.all')}</a></li>
-                <li><a href="#/coffee" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.subscriptions')}</a></li>
-                <li><a href="#/order" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.gear')}</a></li>
+                <li><a href="#/coffee?type=washed" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.washed')}</a></li>
+                <li><a href="#/coffee?type=natural" className="hover:text-gold-accent dark:hover:text-white transition-colors">{t('footer.shop.natural')}</a></li>
+                <li><a href="#/coffee?type=roasted" className="hover:text-gold-accent dark:hover:text-white transition-colors font-bold text-[#2C1810] dark:text-white">{t('footer.shop.roasted')}</a></li>
               </ul>
             </div>
 
