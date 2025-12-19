@@ -6,9 +6,19 @@ import { coffeeProducts } from '../data/coffeeData';
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { language, setLanguage, t } = useTranslation();
 
   useEffect(() => {
+    // Initial theme check
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark');
+      setIsDarkMode(true);
+    }
+
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       if (isScrolled !== scrolled) {
@@ -21,6 +31,18 @@ export function Header() {
       document.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
+
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDarkMode(true);
+    }
+  };
 
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'am' : 'en');
@@ -132,7 +154,20 @@ export function Header() {
           </a>
         </nav>
 
-        <div className="hidden lg:flex items-center space-x-4 z-20">
+        <div className="hidden lg:flex items-center space-x-3 z-20">
+          {/* Theme Toggle Button */}
+          <button 
+            onClick={toggleTheme}
+            className="text-white hover:text-gold-accent transition-all p-2 rounded-full hover:bg-white/10"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            )}
+          </button>
+          
           <button 
             onClick={toggleLanguage}
             className="text-white hover:text-gold-accent transition-colors font-semibold w-10 text-center uppercase tracking-wide text-sm drop-shadow-md"
@@ -145,7 +180,19 @@ export function Header() {
           </a>
         </div>
 
-        <div className="flex lg:hidden items-center gap-4 z-20">
+        <div className="flex lg:hidden items-center gap-3 z-20">
+          <button 
+            onClick={toggleTheme}
+            className="text-white hover:text-gold-accent transition-all p-1.5"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            )}
+          </button>
+
           <button 
             onClick={toggleLanguage}
             className="text-white border-white hover:text-gold-accent hover:border-gold-accent transition-colors font-semibold text-xs border rounded px-2 py-1 drop-shadow-md"
