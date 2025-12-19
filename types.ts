@@ -8,7 +8,7 @@ export interface CoffeeProduct {
   price: number;
   region: string;
   altitude: string;
-  process: 'Washed' | 'Natural' | 'Anaerobic' | 'Honey';
+  process: 'Washed' | 'Natural' | 'Anaerobic' | 'Honey' | 'Roasted';
   grade: string;
   score?: string; // Cupping score
   harvestSeason?: string;
