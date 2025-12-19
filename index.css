@@ -2,19 +2,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Base transitions for background and text */
 body {
   font-family: 'Lato', sans-serif;
   background-color: #FDFBF7;
   color: #4A3728; /* Coffee Brown */
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-    color: #f5f5f5;
-  }
+.dark body {
+  background-color: #121212;
+  color: #f5f5f5;
 }
 
 .font-display {
@@ -80,4 +80,13 @@ body {
     transform: translateY(0);
     filter: blur(0);
   }
+}
+
+/* Utility for hiding scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
