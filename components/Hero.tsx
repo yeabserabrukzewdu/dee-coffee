@@ -4,7 +4,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 
 const slidesData = [
   {
-    image: "/slide-01.jpg",
+    image: "/slide-01.webp",
     key: "slide1"
   },
   {
@@ -12,7 +12,7 @@ const slidesData = [
     key: "slide2"
   },
   {
-    image: "/slide-03.jpg",
+    image: "/slide-03.webp",
     key: "slide3"
   }
 ];

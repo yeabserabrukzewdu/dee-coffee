@@ -16,7 +16,7 @@ export function HomeAbout() {
              <Reveal>
                 <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
                     <img 
-                        src="coffee.jpg"  
+                        src="coffee.webp"  
                         alt="Coffee Cupping in Ethiopia" 
                         className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                     />

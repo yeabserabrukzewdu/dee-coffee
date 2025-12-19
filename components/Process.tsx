@@ -103,7 +103,7 @@ export function Process() {
             title={t('process.sourcing.title')}
             description={t('process.sourcing.description')}
             detail={t('process.sourcing.detail')}
-            image="hand picking.png"
+            image="hand picking.webp"
           />
           
           <ProcessStep 
@@ -161,7 +161,7 @@ export function Process() {
       {/* Full Width Sticky/Parallax Social Responsibility Section */}
       <div 
          className="relative mt-32 min-h-[70vh] flex items-center justify-center bg-fixed bg-cover bg-center bg-no-repeat" 
-         style={{ backgroundImage: "url('/sticky.jpg')"}}
+         style={{ backgroundImage: "url('/sticky.webp')"}}
       >
          
           

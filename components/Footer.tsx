@@ -10,11 +10,10 @@ export function Footer() {
       <div className="container mx-auto px-6 py-12">
         <Reveal>
           <div className="grid md:grid-cols-4 gap-8">
-            {/* Logo & Tagline */}
             <div>
               <a href="#/" className="inline-block mb-4">
                   <img 
-                    src="/logos.png" 
+                    src="/logos.webp" 
                     alt="DEE COFFEE" 
                     className="h-20 w-auto object-contain filter drop-shadow-sm" 
                   />
@@ -23,7 +22,6 @@ export function Footer() {
               <p className="text-sm leading-relaxed max-w-xs">{t('footer.tagline')}</p>
             </div>
 
-            {/* Shop Links - Refined for clarity between Green and Roasted */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.shop.title')}</h4>
               <ul className="space-y-2">
@@ -34,7 +32,6 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Company Links */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.about.title')}</h4>
               <ul className="space-y-2">
@@ -44,10 +41,9 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Connect Section - Vibrant Icons by Default */}
             <div>
               <h4 className="font-bold text-[#2C1810] dark:text-white mb-4 tracking-wider">{t('footer.follow')}</h4>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 flex-wrap">
                 <a href="#" aria-label="Facebook" className="text-[#1877F2] hover:opacity-80 transition-opacity">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
@@ -59,6 +55,9 @@ export function Footer() {
                 </a>
                 <a href="#" aria-label="LinkedIn" className="text-[#0077B5] hover:opacity-80 transition-opacity">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" aria-label="YouTube" className="text-[#FF0000] hover:opacity-80 transition-opacity">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
               </div>
             </div>

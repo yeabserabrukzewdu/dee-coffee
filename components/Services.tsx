@@ -35,7 +35,7 @@ export function Services() {
             </Reveal>
             <Reveal delay={200} className="relative h-96">
                  <img 
-                    src="labratory.jpg" 
+                    src="labratory.webp" 
                     alt="Coffee bags ready for export" 
                     className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-2xl"
                  />

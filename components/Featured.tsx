@@ -5,14 +5,14 @@ import { Reveal } from './Reveal';
 // Updated to use image placeholders. 
 // Replace the 'image' URLs below with your actual logo file paths (e.g., '/assets/logos/organic.png')
 const certifications = [
-  { id: 'org', label: 'RAINFOREST ALLIANCE', image: '1.png' },
-  { id: 'ft', label: 'Ethiopian national Coffee Assn', image: '2.png' },
-  { id: 'rfa', label: 'E.C.X', image: '3.png' },
-  { id: 'eca', label: 'African fine Coffee Assn', image: '4.jpg' },
-  { id: 'sca', label: 'Ethiopian Coffee Assn', image: '5.png' },
-  { id: 'cq', label: 'USDA ORGANIC', image: '6.png' },
+  { id: 'org', label: 'RAINFOREST ALLIANCE', image: '1.webp' },
+  { id: 'ft', label: 'Ethiopian national Coffee Assn', image: '2.webp' },
+  { id: 'rfa', label: 'E.C.X', image: '3.webp' },
+  { id: 'eca', label: 'African fine Coffee Assn', image: '4.webp' },
+  { id: 'sca', label: 'Ethiopian Coffee Assn', image: '5.webp' },
+  { id: 'cq', label: 'USDA ORGANIC', image: '6.webp' },
   { id: 'jas', label: 'JR petrolium', image: '7.png' },
-  { id: 'eu', label: 'EU Organic', image: '1.png' },
+  { id: 'eu', label: 'EU Organic', image: '3.webp' },
 ];
 
 const infiniteCertifications = [...certifications, ...certifications, ...certifications];

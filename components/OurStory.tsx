@@ -12,7 +12,7 @@ export function OurStory() {
       <div className="relative h-[60vh] flex items-center justify-center">
          <div className="absolute inset-0 z-0">
              <img 
-              src="/Company.jpg"
+              src="/Company.webp"
                alt="Ethiopian Landscape" 
                className="w-full h-full object-cover"
              />
@@ -32,7 +32,7 @@ export function OurStory() {
             <Reveal>
                <div className="relative rounded-lg overflow-hidden shadow-2xl group">
                   <img 
-                    src="OUR COFFEE.jpg"  
+                    src="OUR COFFEE.webp"  
                     alt="Ethiopian coffee farmer"
                     className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                   />
