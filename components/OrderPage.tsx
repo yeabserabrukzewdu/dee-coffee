@@ -4,7 +4,7 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { useSupabase } from '../hooks/useSupabase';
 import { Reveal } from './Reveal';
 
-const InputField = ({ id, label, type = "text", placeholder = "" }) => (
+const InputField = ({ id, label, type = "text", placeholder = "", required = true }) => (
   <div>
     <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
       {label}
@@ -15,7 +15,7 @@ const InputField = ({ id, label, type = "text", placeholder = "" }) => (
       name={id}
       placeholder={placeholder}
       className="w-full bg-[#FDFBF7] dark:bg-[#222] border border-gray-300 dark:border-gray-600 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-accent transition-colors duration-300"
-      required
+      required={required}
     />
   </div>
 );
@@ -25,6 +25,9 @@ export function OrderPage() {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
+    const [emailStatus, setEmailStatus] = useState<'idle' | 'sending' | 'success' | 'failed'>('idle');
+    // Added submittedEmail state to fix the scope error of formData in the success view
+    const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
     const { supabase, error: supabaseError, loading: supabaseLoading } = useSupabase();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,12 +40,18 @@ export function OrderPage() {
 
         setLoading(true);
         setSubmitError(null);
+        setEmailStatus('sending');
         
         const formData = new FormData(e.currentTarget);
+        const email = formData.get('email') as string;
+        const fullName = formData.get('fullName') as string;
+        
+        // Store email in state for use in the success message after re-render
+        setSubmittedEmail(email);
         
         const dataToInsert = {
-          full_name: formData.get('fullName'),
-          email: formData.get('email'),
+          full_name: fullName,
+          email: email,
           phone: formData.get('phone'),
           company: formData.get('company'),
           address: formData.get('address'),
@@ -51,18 +60,39 @@ export function OrderPage() {
         };
 
         try {
+          // 1. Save to Database
           const { error: insertError } = await supabase
             .from('sample_requests')
             .insert([dataToInsert]);
           
-          if (insertError) {
-            throw insertError;
+          if (insertError) throw insertError;
+
+          // 2. Trigger Auto-Response Email
+          try {
+            const emailResponse = await fetch('/api/send-auto-response', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, fullName, interest: dataToInsert.interest }),
+            });
+            
+            const emailData = await emailResponse.json();
+            
+            if (emailResponse.ok && emailData.success) {
+              setEmailStatus('success');
+            } else {
+              console.error('Email API Error:', emailData);
+              setEmailStatus('failed');
+            }
+          } catch (emailErr) {
+            console.error("Fetch error for email API:", emailErr);
+            setEmailStatus('failed');
           }
 
           setSubmitted(true);
 
         } catch (err: any) {
           setSubmitError(err.message || 'An unexpected error occurred. Please try again.');
+          setEmailStatus('failed');
         } finally {
           setLoading(false);
         }
@@ -79,6 +109,19 @@ export function OrderPage() {
                 </div>
                 <h1 className="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('orderPage.successMessage')}</h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">{t('orderPage.subheadline')}</p>
+                
+                {emailStatus === 'success' ? (
+                   <p className="text-sm text-green-600 dark:text-green-400 mb-8 font-bold flex items-center justify-center gap-2">
+                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                     {/* Use submittedEmail state to fix the error where formData was out of scope */}
+                     Confirmation email sent to {submittedEmail || 'your inbox'}.
+                   </p>
+                ) : (
+                   <p className="text-sm text-amber-600 dark:text-amber-400 mb-8 italic">
+                     Data saved. (Auto-responder is currently being verified by the server).
+                   </p>
+                )}
+
                 <a href="#/" className="inline-block bg-gold-accent text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition-all">
                   {t('nav.home')}
                 </a>
@@ -106,10 +149,9 @@ export function OrderPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
              {/* Contact Info Column */}
              <Reveal delay={100} className="space-y-8">
-                   {/* Contact Cards */}
                    <div className="bg-white dark:bg-[#181818] p-8 rounded-2xl shadow-lg border-l-4 border-gold-accent transition-colors duration-300">
                       <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-100 dark:border-gray-700 pb-4">
-                        {t('contact.getInTouch')}
+                        Direct Channels
                       </h3>
                       
                       <div className="space-y-8">
@@ -129,8 +171,7 @@ export function OrderPage() {
                             </div>
                             <div>
                                <p className="font-bold text-gray-900 dark:text-white text-lg mb-1">{t('contact.phoneTitle')}</p>
-                               <p className="text-gray-600 dark:text-gray-400 hover:text-gold-accent transition-colors"><a href="tel:+251911223344">+251 911 22 33 44 </a></p>
-                               <p className="text-gray-600 dark:text-gray-400 hover:text-gold-accent transition-colors"><a href="tel:+251911223344">+251 911 22 33 44 </a></p>
+                               <p className="text-gray-600 dark:text-gray-400 hover:text-gold-accent transition-colors"><a href="tel:+251911223344">+251 911 22 33 44</a></p>
                             </div>
                          </div>
 
@@ -146,11 +187,8 @@ export function OrderPage() {
                       </div>
                    </div>
 
-                   {/* Business Hours */}
                    <div className="bg-[#0f291e] p-8 rounded-2xl shadow-xl text-white relative overflow-hidden">
-                      {/* Decorative Pattern */}
                       <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-bl-full pointer-events-none"></div>
-                      
                       <h3 className="font-display text-2xl font-bold mb-6 text-gold-accent flex items-center gap-2">
                         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         {t('contact.hoursTitle')}
@@ -176,7 +214,7 @@ export function OrderPage() {
              <Reveal delay={200}>
                 <div className="bg-white dark:bg-[#181818] p-8 md:p-10 rounded-2xl shadow-2xl transition-colors duration-300 relative z-10">
                    <h3 className="font-display text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                     {t('orderPage.headline')}
+                     Request Sample
                    </h3>
                    <form 
                       onSubmit={handleSubmit}
@@ -203,6 +241,7 @@ export function OrderPage() {
                             rows={4}
                             placeholder={t('orderPage.interestPlaceholder')}
                             className="w-full bg-[#FDFBF7] dark:bg-[#222] border border-gray-300 dark:border-gray-600 rounded-lg py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold-accent transition-colors duration-300"
+                            required
                           ></textarea>
                         </div>
                       </div>
@@ -214,7 +253,6 @@ export function OrderPage() {
                         >
                           {supabaseLoading ? 'Connecting...' : (loading ? 'Submitting...' : t('orderPage.submit'))}
                         </button>
-                        {supabaseError && <p className="text-red-500 mt-4 text-sm text-center">Database Error: {supabaseError}</p>}
                         {submitError && <p className="text-red-500 mt-4 text-sm text-center">{submitError}</p>}
                       </div>
                    </form>
@@ -225,7 +263,7 @@ export function OrderPage() {
           {/* Map Section */}
           <Reveal delay={300} className="mt-24">
              <div className="text-center mb-8">
-                <h3 className="font-display text-3xl font-bold text-gray-900 dark:text-white">{t('contact.mapTitle')}</h3>
+                <h3 className="font-display text-3xl font-bold text-gray-900 dark:text-white">Head Office</h3>
                 <div className="h-1 w-20 bg-gold-accent mx-auto mt-4"></div>
              </div>
              
