@@ -7,32 +7,51 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+  // 1. Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { email, fullName, interest } = req.body;
 
+  // 2. Validate input
   if (!email || !fullName) {
     return res.status(400).json({ error: 'Email and Name are required.' });
   }
 
+  // 3. Check for required Environment Variables
+  if (!process.env.SMTP_PASS) {
+    console.error('CRITICAL: SMTP_PASS environment variable is missing.');
+    return res.status(500).json({ 
+      error: 'Server configuration error: SMTP_PASS is not set.',
+      hint: 'Please add SMTP_PASS to your environment variables in your hosting dashboard.'
+    });
+  }
+
   try {
-    // 1. Create a transporter using your cPanel SMTP settings from the screenshot
+    // 4. Create a transporter with specific cPanel compatibility settings
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'mail.dee-coffee.com',
       port: parseInt(process.env.SMTP_PORT || '465'),
       secure: true, // Use SSL/TLS for Port 465
       auth: {
         user: process.env.SMTP_USER || 'info@dee-coffee.com',
-        pass: process.env.SMTP_PASS, // This MUST be set in your Environment Variables
+        pass: process.env.SMTP_PASS, 
       },
-      // Increase timeout for shared hosting environments
-      connectionTimeout: 10000, 
-      greetingTimeout: 10000,
+      tls: {
+        // This is important for many cPanel/Shared hosting setups that might have
+        // certificate hostname mismatches or self-signed certs.
+        rejectUnauthorized: false 
+      },
+      connectionTimeout: 15000, 
+      greetingTimeout: 15000,
     });
 
-    // 2. Define the email content with professional HTML styling
+    // 5. Verify the connection before trying to send
+    await transporter.verify();
+    console.log('SMTP connection verified successfully.');
+
+    // 6. Define the email content
     const mailOptions = {
       from: `"DEE COFFEE Export" <${process.env.SMTP_USER || 'info@dee-coffee.com'}>`,
       to: email,
@@ -47,37 +66,39 @@ export default async function handler(req, res) {
             <h2 style="color: #2C1810; font-size: 22px;">Hello ${fullName},</h2>
             <p style="font-size: 16px;">Thank you for reaching out to us. We have successfully received your request regarding:</p>
             <div style="background-color: #ffffff; border-left: 4px solid #c8a46e; padding: 15px 20px; margin: 25px 0; font-style: italic; color: #6F4E37; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-              "${interest}"
+              "${interest || 'Coffee Sample Request'}"
             </div>
-            <p style="font-size: 16px;">Our export specialists are currently reviewing your requirements. You can expect a detailed proforma invoice and sample shipping information within <strong>24 to 48 business hours</strong>.</p>
-            <p style="font-size: 16px;">While you wait, we invite you to browse our latest harvest gallery on our website.</p>
+            <p style="font-size: 16px;">Our export specialists are currently reviewing your requirements. You can expect a response within <strong>24 to 48 business hours</strong>.</p>
             <div style="text-align: center; margin-top: 35px;">
-              <a href="https://dee-coffee.com" style="background-color: #c8a46e; color: #2C1810; padding: 14px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px rgba(200, 164, 110, 0.2);">Visit Our Website</a>
+              <a href="https://dee-coffee.com" style="background-color: #c8a46e; color: #2C1810; padding: 14px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block;">Visit Our Website</a>
             </div>
             <div style="margin-top: 50px; padding-top: 25px; border-top: 1px solid #E6D5BC; font-size: 13px; color: #8C7A6B;">
               <p style="margin: 0;">Best Regards,</p>
               <p style="margin: 5px 0; font-weight: bold; color: #2C1810;">The DEE COFFEE Export Team</p>
               <p style="margin: 0;">Addis Ababa, Ethiopia</p>
-              <p style="margin: 15px 0 0 0;"><em>Please do not reply directly to this automated message.</em></p>
             </div>
-          </div>
-          <div style="background-color: #f5f2eb; padding: 20px; text-align: center; font-size: 12px; color: #A69076;">
-            &copy; ${new Date().getFullYear()} DEE COFFEE Exporters. All Rights Reserved.
           </div>
         </div>
       `,
     };
 
-    // 3. Send the email
-    await transporter.sendMail(mailOptions);
+    // 7. Send the email
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: ' + info.response);
 
-    return res.status(200).json({ message: 'Auto-response sent successfully.' });
+    return res.status(200).json({ success: true, message: 'Auto-response sent successfully.' });
   } catch (error) {
-    console.error('SMTP Error:', error);
-    // Silent fail on email to ensure the user still sees the "Success" screen on front-end
-    return res.status(200).json({ 
-      message: 'Data saved, but auto-responder failed.', 
-      error: error.message 
+    console.error('SMTP ERROR DETAILS:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
+    
+    // We return a 500 here so the frontend can catch that the email specifically failed
+    return res.status(500).json({ 
+      success: false,
+      error: 'Failed to send email.', 
+      details: error.message 
     });
   }
 }
